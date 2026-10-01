@@ -944,6 +944,7 @@ const PROJECTS = [
     "git": "https://github.com/Byungcoco/FinalProject",
     "youtube": "cp50DQF3Ngw",
     "media": "assets/duet/highlight.mp4",
+    "thumb": "assets/duet/thumb.webp",
     "overview": [
       "DirectX 11과 C++ 기반 자체 엔진을 활용하여 제작한 3D 팀 포트폴리오 프로젝트입니다. 이 프로젝트에서 맵 툴과 콘텐츠 제작을 맡았습니다.",
       "듀엣 나이트 어비스는 판 스튜디오가 개발한 판타지 3D 액션 RPG로, 근거리와 원거리 무기를 조합해 전투하는 액션 구조가 특징입니다. 원작 전체를 재현하기보다 원작의 3D 액션 분위기와 필드 기반 콘텐츠 연출을 참고했습니다.",
@@ -1193,6 +1194,7 @@ const PROJECTS = [
     "git": "https://github.com/mxxjee/MW_MinigameFrameworks",
     "youtube": "",
     "media": "assets/msw/highlight.mp4",
+    "thumb": "assets/msw/thumb.webp",
     "overview": [
       "MSW(MapleStory Worlds) 플랫폼과 mLua 스크립트로 제작 중인 1대1 미니게임 대전 게임입니다. 두 플레이어가 매칭되어 여러 미니게임으로 5판 3선승을 겨루며, 한 판이 60초를 넘기지 않는 빠른 진행으로 매판 긴장감을 주는 것을 목표로 하고 있습니다.",
       "게임이 안정적으로 돌아갈 수 있는 시스템을 먼저 개발한 뒤 미니게임 제작으로 넘어갈 예정입니다.",
@@ -1305,10 +1307,10 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 function placeholder(src){
   return `<div class="ph"><strong>여기에 GIF가 들어갑니다</strong>${src ? `<span>${esc(src)}</span>` : ''}</div>`;
 }
-function mediaHTML(src, {autoplay = true, eager = false} = {}){
+function mediaHTML(src, {autoplay = true, eager = false, poster = ''} = {}){
   if(!src) return placeholder('');
   if(/\.(mp4|webm)$/i.test(src)){
-    return `<video data-src-label="${esc(src)}" src="${esc(src)}" muted loop playsinline ${autoplay ? 'autoplay' : ''} preload="metadata"></video>`;
+    return `<video data-src-label="${esc(src)}" src="${esc(src)}" ${poster ? `poster="${esc(poster)}"` : ''} muted loop playsinline ${autoplay ? 'autoplay' : ''} preload="metadata"></video>`;
   }
   return `<img data-src-label="${esc(src)}" src="${esc(src)}" alt="" ${eager ? '' : 'loading="lazy"'} decoding="async">`;
 }
@@ -1322,7 +1324,7 @@ document.addEventListener('error', e => {
 
 function cardInner(p){
   return `
-    <div class="card-media">${mediaHTML(p.media, {autoplay: CARD_VIDEO_PLAY === 'always'})}</div>
+    <div class="card-media">${mediaHTML(p.media, {autoplay: CARD_VIDEO_PLAY === 'always', poster: p.thumb})}</div>
     <div class="card-body">
       <h3 class="card-title">${esc(p.title)}</h3>
       <p class="card-sub">${esc(p.sub)}</p>
@@ -1421,8 +1423,10 @@ function hydrateStills(scope){
     };
     if(/\.(mp4|webm)$/i.test(src)){
       const v = document.createElement('video');
-      v.muted = true; v.preload = 'auto'; v.playsInline = true;
-      v.addEventListener('loadeddata', () => draw(v, v.videoWidth, v.videoHeight), {once:true});
+      // 영상 전체를 받지 않도록 메타데이터만 받고 첫 장면으로 seek 해서 그림
+      v.muted = true; v.preload = 'metadata'; v.playsInline = true;
+      v.addEventListener('loadedmetadata', () => { v.currentTime = 0.01; }, {once:true});
+      v.addEventListener('seeked', () => { draw(v, v.videoWidth, v.videoHeight); v.removeAttribute('src'); v.load(); }, {once:true});
       v.src = src;
     } else {
       const im = new Image();
@@ -1767,14 +1771,14 @@ const projShop = makeShop({
     </span>
     <span class="r-stat">${esc(it.engine)}<br>${esc(it.team)}</span>`,
   preview: it => it.kind === 'tool' ? `
-    <div class="pv-media">${mediaHTML(it.media, {eager:true})}</div>
+    <div class="pv-media">${mediaHTML(it.media, {eager:true, poster: it.thumb})}</div>
     <div class="pv-body">
       <h3 class="pv-title">${esc(it.name)}</h3>
       <p class="pv-sub">사용 프로젝트: ${esc(it.projectTitle)}</p>
       <p class="pv-desc">${esc(it.desc)}</p>
       <span class="btn pv-go">자세히 보기</span>
     </div>` : `
-    <div class="pv-media">${mediaHTML(it.media, {eager:true})}</div>
+    <div class="pv-media">${mediaHTML(it.media, {eager:true, poster: it.thumb})}</div>
     <div class="pv-body">
       <h3 class="pv-title">${esc(it.title)}</h3>
       <p class="pv-sub">${esc(it.sub)}</p>
@@ -1835,7 +1839,7 @@ function itemsHTML(list){
 }
 function panelHTML(p, key){
   if(key === 'overview') return `
-    <div class="ov-media">${mediaHTML(p.overviewMedia || p.media, {eager:true})}</div>
+    <div class="ov-media">${mediaHTML(p.overviewMedia || p.media, {eager:true, poster: p.overviewMedia ? '' : p.thumb})}</div>
     <dl class="facts">
       <div><dt>엔진</dt><dd>${esc(p.engine)}</dd></div>
       <div><dt>인원</dt><dd>${esc(p.team)}</dd></div>
