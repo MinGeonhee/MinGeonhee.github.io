@@ -1289,6 +1289,68 @@ const PROJECTS = [
     "tools": [],
     "overviewMedia": "",
     "notion": "https://conscious-sun-4a1.notion.site/3d12ae810b66800196f4fcb61b71c0ba"
+  },
+  {
+    "id": "mafia",
+    "title": "CMD 마피아 게임 서버",
+    "sub": "Winsock TCP로 만드는 7인 마피아 게임 서버 (개발 중)",
+    "engine": "Winsock (C++)",
+    "team": "1인",
+    "period": "2026.10 – 개발 중",
+    "role": "서버, 게임 로직",
+    "tags": [
+      "C++",
+      "Winsock (TCP)",
+      "Multi Thread"
+    ],
+    "git": "https://github.com/MinGeonhee/Winsock_MafiaServer",
+    "youtube": "",
+    "media": "assets/server/mafia-flow.png",
+    "thumb": "assets/server/mafia-flow.png",
+    "overview": [
+      "Winsock TCP와 C++로 제작 중인 7인 CMD 마피아 게임 서버입니다. 먼저 만든 콘솔 채팅 서버를 확장해, 방(Room) 단위로 게임 상태를 관리하고 규칙 판정은 서버가 담당하는 구조로 설계하고 있습니다.",
+      "채팅 서버에서 main 함수에 몰려 있던 코드를 Server / Client / Room / Game 클래스로 나누고, 소켓 관리와 패킷 처리는 별도 정적 라이브러리(NetLib)로 분리했습니다.",
+      "현재 NetLib와 서버 골격을 만들고 접속 처리를 구현하고 있으며, 이후 직업 배정, 낮 / 밤 진행, 투표, 승리 조건 판정을 상태 머신으로 구현할 예정입니다."
+    ],
+    "tech": [
+      {
+        "name": "NetLib 소켓 래퍼",
+        "desc": "Winsock 소켓과 주소를 클래스로 감싸 정적 라이브러리로 분리했습니다. 팩토리(Create)가 처음부터 unique_ptr을 반환해, 소켓의 해제 경로가 소유자 하나로 고정됩니다.",
+        "media": "",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf",
+        "points": [
+          "CSocket / CAddress가 IPv4 · IPv6 주소와 Bind, Listen, Accept, Connect를 감쌈",
+          "생성자는 private, 초기화가 실패하면 Create가 nullptr 반환",
+          "소유권 이동은 std::move로 명시하고, 빌려 쓰는 함수는 raw 포인터로 받음"
+        ]
+      },
+      {
+        "name": "헤더 기반 패킷 경계 처리",
+        "desc": "TCP는 메시지 경계가 없기 때문에 패킷 앞에 타입과 길이를 담은 헤더를 두고, 헤더를 먼저 받은 뒤 길이만큼 본문을 받아 패킷을 구분합니다.",
+        "media": "",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf",
+        "points": [
+          "PacketHeader(타입, 길이) + Packet<T> 템플릿, #pragma pack(1)로 메모리 배치 일치",
+          "MSG_WAITALL로 헤더 크기, 본문 길이만큼 모두 받을 때까지 대기",
+          "길이 값이 최대 크기를 넘으면 버려서 버퍼 넘침 방지"
+        ]
+      },
+      {
+        "name": "이벤트 큐 기반 스레드 모델 (구현 중)",
+        "desc": "Accept와 수신 스레드는 받은 것을 이벤트 큐에 넣기만 하고, 접속자 목록과 게임 상태는 로직 스레드 하나에서만 수정하도록 설계했습니다.",
+        "media": "assets/server/mafia-flow.png",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf",
+        "points": [
+          "동기화가 필요한 지점을 이벤트 큐 하나로 제한",
+          "로직 스레드가 큐를 swap으로 한 번에 가져와 락 잡는 시간 최소화",
+          "끊긴 클라이언트의 고유 ID는 재사용하지 않아 남은 이벤트가 엉뚱한 사람에게 처리되는 것을 방지"
+        ]
+      }
+    ],
+    "contents": [],
+    "tools": [],
+    "overviewMedia": "",
+    "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
   }
 ];
 
@@ -2518,6 +2580,10 @@ const SKILL_CATS = [
     "color": "#E8A10C"
   },
   {
+    "name": "서버",
+    "color": "#E5484D"
+  },
+  {
     "name": "AI 활용",
     "color": "#8B5CF6"
   }
@@ -2613,6 +2679,20 @@ const SKILLS = [
     "project": "duet",
     "desc": "맵에 생동감을 불어넣는 시민 관리 시스템입니다.",
     "media": "assets/duet/citizen.png"
+  },
+  {
+    "name": "이벤트 큐 기반 멀티스레드 채팅 서버",
+    "cat": "서버",
+    "desc": "Winsock TCP 기반 1:N 콘솔 채팅 서버입니다. Accept 스레드와 클라이언트마다 생성되는 수신 스레드는 받은 내용을 이벤트 큐에 넣기만 하고, main 스레드가 큐에서 꺼내 방 입장, 브로드캐스트, 퇴장을 처리합니다.",
+    "media": "assets/server/chat-flow.png",
+    "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b668157ab40dd36da3eed96",
+    "intent": "accept와 recv는 데이터가 올 때까지 멈추는 블로킹 함수라 한 스레드에서 모두 처리할 수 없었고, 그렇다고 각 스레드가 채팅방 데이터를 직접 수정하면 모든 곳에 락을 걸어야 했습니다.",
+    "points": [
+      "Accept 스레드는 접속을 Connect 이벤트로, 수신 스레드는 패킷과 접속 종료를 이벤트로 전달",
+      "mutex로 보호한 ServerEventQueue 하나로 스레드 간 데이터 전달을 모음",
+      "채팅방 데이터는 main 스레드에서만 수정해 별도 락이 필요 없음",
+      "끊긴 수신 스레드는 자기 자신이 아니라 main 스레드에서 join"
+    ]
   },
   {
     "name": "멀티 카메라 렌더링 리팩토링",
@@ -2834,6 +2914,10 @@ const STACK = [
     {n:'DirectX Tex', d:['DDS, TGA 등 Texture 리소스 로드와 생성·변환']},
     {n:'JSON', d:['툴 데이터 저장·로딩, 설정 데이터 관리, 파싱한 데이터로 객체 생성']},
     {n:'ImGui', d:['맵 툴, 이펙트 툴 등 Editor UI를 빠르게 구성해 Object 생성·수정·삭제와 툴 기능 제어']}]},
+  {name:'네트워크', items:[
+    {n:'Winsock (TCP)', d:['Winsock TCP 기반 1:N 콘솔 채팅 서버 / 클라이언트 제작, 외부 PC 접속 테스트', '마피아 게임 서버에서 소켓·주소를 클래스로 감싼 정적 라이브러리(NetLib) 제작', '헤더(타입+길이)를 먼저 받고 길이만큼 본문을 받아 TCP 메시지 경계 처리']},
+    {n:'Multi Thread', d:['Accept 스레드와 클라이언트별 수신 스레드를 두고, 받은 내용은 이벤트 큐로 main 스레드에 전달', 'mutex로 보호하는 지점을 이벤트 큐 하나로 제한하고 공유 데이터는 main 스레드에서만 수정', '연결이 끊긴 수신 스레드는 main 스레드에서 join']},
+    {n:'Smart Pointer', d:['소켓·클라이언트 객체를 unique_ptr로 관리하고 소유권 이동은 std::move로 명시', '팩토리가 unique_ptr을 반환해 해제 경로를 소유자 하나로 고정']}]},
   {name:'협업·AI', items:[
     {n:'GitHub', d:['DirectX 9 팀 프로젝트, DirectX 11 개인 / 팀 프로젝트에서 버전 관리, 코드 공유, 테스트']},
     {n:'Notion', d:['팀 프로젝트 전체 계획·출퇴근 관리, 프로젝트 정리 문서화']},
@@ -2899,7 +2983,7 @@ const ROAD = [
   {date:'2026.09', kind:'project', project:'msw', mob:'mimic', title:'맞짱 : 미니게임 배틀 개발 시작', gain:['Claude', 'Codex'], up:['mLua'], meta:'2026.09 – 개발 중'},
   {date:'2026.09', kind:'cert', mob:'wolf', title:'2026년 정기 기사 3회 필기', up:['CS 기초'], desc:'한국산업인력공단'},
   {date:'2026.10', kind:'project', mob:'slime', title:'콘솔 채팅 서버 완성', gain:['Winsock', 'TCP/IP', 'Multi Thread'], desc:'Winsock TCP 기반 1:N 채팅 서버 · Accept / 수신 스레드와 이벤트 큐로 네트워크와 로직 처리를 분리'},
-  {date:'2026.10', kind:'project', mob:'bat', title:'CMD 마피아 게임 서버 개발 시작', gain:['Smart Pointer'], up:['Winsock', 'Multi Thread'], meta:'2026.10 – 개발 중', desc:'채팅 서버를 확장해 방 단위로 게임 상태를 관리하고 규칙 판정은 서버가 담당하는 7인 마피아 게임 서버'}
+  {date:'2026.10', kind:'project', project:'mafia', mob:'bat', title:'CMD 마피아 게임 서버 개발 시작', gain:['Smart Pointer'], up:['Winsock', 'Multi Thread'], meta:'2026.10 – 개발 중'}
 ];
 // 이력 길 전용 도트(몬스터·용사·풍경). 한 글자 = 한 칸, pal 색으로 칠함
 const ROAD_ART = {"pal":{"K":"#18202E","k":"#3A4A63","W":"#FFFFFF","G":"#3CC47C","g":"#23915A","h":"#9BE8B4","B":"#2B50D9","b":"#1B338F","l":"#9BB3FF","R":"#F0483E","r":"#A82A22","p":"#FFB0A3","Y":"#FFD23F","y":"#D99A0B","O":"#FF8A2B","P":"#8B5CF6","q":"#5634B0","v":"#C9B6FF","S":"#D4DBE6","s":"#98A3B6","M":"#5F6B7E","N":"#8B5A2B","n":"#5A3714","T":"#D9A86C","E":"#EFE6CF","F":"#F6C9A0","C":"#6FC6E8","c":"#3C8FB8"},"mobs":{"slime":{"name":"초록 슬라임","map":["................","......KKKK......","....KKhhhGKK....","...KhhGGGGGGK...","..KhGGGGGGGGGK..","..KGGGGGGGGGGK..",".KGGGWKGGGWKGGK.",".KGGGKKGGGKKGGK.",".KGGGGGGGGGGGGK.",".KGGGGGKKGGGGgK.",".KgGGGGGGGGGGgK.","..KggggggggggK..","...KKKKKKKKKK..."]},"mush":{"name":"독버섯","map":[".....KKKKKK.....","...KKRRRRRRKK...","..KRRWWRRRRRRK..",".KRRWWWRRRWWRRK.",".KRRRWRRRRWWRRK.","KRRRRRRRWRRRRRRK","KrrRRRRRRRRRRrrK",".KKrrrrrrrrrrKK.","...KTTTTTTTTK...","...KTKKTTKKTK...","...KTKWTTKWTK...","...KTTTTTTTTK...","...KTTKKKKTTK...","....KTTTTTTK....","...KnnK..KnnK...","...KKKK..KKKK..."]},"bat":{"name":"동굴 박쥐","map":["K..............K","KK....K..K....KK","KqK...KKKK...KqK","KqqK.KPPPPK.KqqK","KqPqKPPPPPPKqPqK","KqPPqPWKPWKPqPPK",".KqPPPPPPPPPPPK.","..KqPPPWPWPPqK..","...KqqPPPPqqK...","....KK.KK.KK...."]},"frog":{"name":"식인 꽃","map":["....KKK..KKK....","...KRRRKKRRRK...","..KRRpRRRRpRRK..","..KRpKKKKKKpRK..",".KRRKYYYYYYKRRK.",".KRRKYKYYKYKRRK.",".KRRKYYYYYYKRRK.","..KRKYWKKWYKRK..","..KRRKYYYYKRRK..","...KRRKKKKRRK...","....KKKggKKK....",".KK....Kg......K","KGGK...Kg...KKGK",".KGGK..KgK.KGGK.","..KGGKKKgKKGGK..","...KKKKKKKKKK..."]},"skeleton":{"name":"해골 전사","map":[".....KKKKK......","....KEEEEEK.....","...KEEEEEEEK....","...KEKKEKKEK....","...KEKKEKKEK....","...KEEEKEEEK..K.","....KEKEKEK..KsK",".....KKKKK..KsK.","...KKEKEKEKKsK..","..KEKEEEEEKEK...","..KEKKEEEKKyK...","...K.KEEEK.KK...",".....KEKEK......","....KEK.KEK.....","....KEK.KEK.....","...KKK...KKK...."]},"ghost":{"name":"떠도는 유령","map":[".....KKKKKK.....","...KKvvvvvvKK...","..KvvWWvvvvvvK..",".KvvWWvvvvvvvvK.",".KvvvvvvvvvvvvK.","KvvvKKvvvvKKvvvK","KvvvKKvvvvKKvvvK","KvvvvvvvvvvvvvvK","KvvvvvvKKvvvvvvK","KvvvvvKPPKvvvvvK","KvvvvvvKKvvvvvvK","KvvvvvvvvvvvvvvK","KvvKvvvKKvvvKvvK","KvK.KvK..KvK.KvK",".K...K....K...K."]},"mimic":{"name":"미믹 상자","map":["..KKKKKKKKKKKK..",".KNNNNNNNNNNNNK.","KNTTNNNNNNNNTTNK","KNNNNNYYYYNNNNNK","KKKKKKYKKYKKKKKK","KWKWKWKWKWKWKWKK","KRRRRRRRRRRRRRRK","KRRRRpRRRRRRRRRK","KWKWKWKWKWKWKWKK","KKKKKKKKKKKKKKKK","KNNNNNNYYNNNNNNK","KNTTNNNYYNNNTTNK","KNNNNNNNNNNNNNNK",".KKKKKKKKKKKKKK."]},"wolf":{"name":"잿빛 늑대","map":["..K.K...........",".KsKsK..........",".KssssK.........","KsWKsssK........","KssssssKKKKKKK..","KKKsssssssssssKK","..KsssssssssMssK","..KsSSsssssssMsK","..KsSSssssssssK.","...KsssKKKKsssK.","...KsK.K..KsKsK.","...KsK....KsK.K.","..KKKK...KKKK..."]},"golem":{"name":"바위 골렘","map":[".......KKKKKK.......",".....KKssssssKK.....","....KssSSsssssMK....","....KsSKYssKYssK....","....KsssssssssMK....","..KKKKsMMssMMsKKKK..",".KssSsKKKKKKKKsSssK.","KsSSsssssGsssssSSssK","KsSsssssGGsssssssMsK","KssssKsssssssKssssMK","KsssK.KsssssK.KsssMK",".KssK.KsSsssK.KssMK.",".KMMK.KssssMK.KMMK..","..KK.KsssKsssK.KK...",".....KssK.KssK......","....KsSsK.KsSsK.....","....KMMMK.KMMMK.....","....KKKKK.KKKKK....."]},"beholder":{"name":"거대 눈알","map":["..K....K...K....K...",".KqK..KqK.KqK..KqK..","..Kq..Kq...qK..qK...","...KqqKKKKKKKqqK....","....KPPPPPPPPPK.....","...KPPvvPPPPPPPK....","..KPPvWWWWWWWPPPK...","..KPvWWWWWWWWWPPK...",".KPPWWWBBBBWWWWPPK..",".KPPWWBBKKBBWWWPPK..",".KPPWWBKKKKBWWWPPK..",".KPPWWBBKKBBWWWPPK..",".KPPWWWBBBBWWWWPPK..","..KPPWWWWWWWWWPPK...","..KPPPWWWWWWWPPPK...","...KqPPPPPPPPPqK....","....KqKWKWKWKqK.....",".....KKKKKKKKK......"]},"octo":{"name":"바다 문어","map":["......KKKKKKK.......","....KKRRRRRRRKK.....","...KRRpRRRRRRRRK....","..KRRppRRRRRRRRRK...","..KRRRRRRRRRRRRRK...",".KRRRWWKRRRWWKRRRK..",".KRRRWKKRRRWKKRRRK..",".KRRRRRRRRRRRRRRRK..",".KRRRRRRKKKRRRRRRK..","..KRRRRKrrrKRRRRK...","..KrRRRRKKKRRRRrK...",".KrKRrRRRRRRRrRKrK..","KrK.KrKrRRRrKrK.KrK.","KrK.KrKKrRrKKrK.KrK.",".KrKKrK.KrK.KrKKrK..","..KK.KK..K..KK.KK...","....................","...................."]},"dragon":{"name":"붉은 드래곤","map":["..........................K.....",".........................KrK....","..KK....................KrrK....",".KrrKK.................KrRrK....",".KrRRrKK..............KrRRrK.KK.","..KrRRRrKK..........KKrRRRrKKrK.","..KrRRRRRrKK.......KrRRRRRRrrK..","...KrRRRRRRrK.....KrRRKRRRRRK...","...KrRRRRRRRrK...KrRRKYKRRRRRKK.","....KrRRRRRRRrK..KRRRKKKRRRRRRRK","....KrRRRRRRRRrKKRRRRRRRRRRKKKK.",".....KrRRRRRRRRrKRRRRRRRRRRK....",".....KrRRRRRRRRRrRRRRRRRWKWK....","......KrrRRRRRRRRRRRRRRKK.K.....",".......KKrrRRRRRRRRRRRRK........",".........KKRRRRRRRRRRRRK........","........KRRRYYYYYYRRRRRRK.......",".......KRRRYYYYYYYYRRRRRK.......","......KRRRRYYYYYYYYRRRRRRK......",".....KRRKRRYYYYYYYRRRKRRRK......",".KKKKRRK.KRRYYYYYRRRK.KRRK......","KrrrrRK..KRRRRRRRRRK...KRRK.....",".KKrrK..KRRK.KKK.KRRK..KWKWK....","...KK...KWKWK....KWKWK..KKK.....","........KKKK......KKKK.........."]}},"hero":{"walk1":["......KKK.......",".....KRRRK...K..","....KKKRKKK.KWK.","...KSSSSSSSKKSK.","..KSWSSSSSSSKSK.","..KSKKKKKKKSKSK.","..KSSSSSSSSSKSK.","...KSSSSSSSKKSK.","..KKBBBBBBBKYYYK",".KFKBBYYBBBKFyK.",".KKBBBBBBBBBKyK.","..KBBBBBBBBBKKK.","..KbbbKKKbbbK...","..KMMK...KMMK...","..KMMK...KMMK...",".KnnnK...KnnnK.."],"walk2":["......KKK.......",".....KRRRK...K..","....KKKRKKK.KWK.","...KSSSSSSSKKSK.","..KSWSSSSSSSKSK.","..KSKKKKKKKSKSK.","..KSSSSSSSSSKSK.","...KSSSSSSSKKSK.","..KKBBBBBBBKYYYK",".KFKBBYYBBBKFyK.",".KKBBBBBBBBBKyK.","..KBBBBBBBBBKKK.","..KbbbbbbbbbK...","...KMMKKMMK.....","...KMMKKMMK.....","..KnnnKKnnnK...."],"atk":["......KKK.............",".....KRRRK............","....KKKRKKK...........","...KSSSSSSSK..........","..KSWSSSSSSSK.........","..KSKKKKKKKSK.........","..KSSSSSSSSSK...l.....","...KSSSSSSSK....ll....","..KKBBBBBBBKK.KKKKKKKK",".KFKBBYYBBBKFYSSSSSSWK",".KKBBBBBBBBBKKKKKKKKKK","..KBBBBBBBBBK.........","..KbbbKKKbbbK.........",".KMMK.....KMMK........",".KMMK.....KMMK........","KnnnK.....KnnnK......."]},"deco":{"flowerR":["..K..",".KRK.","KRYRK",".KRK.","..g..",".gg.."],"flowerY":["..K..",".KYK.","KYWYK",".KYK.","..g..","..gg."],"flowerP":["..K..",".KvK.","KvYvK",".KvK.","..g..",".gg.."],"grass":["g..g.g","gg.gg.","ggggg.","hgghgg"],"grass2":[".g..g..",".gg.g.g","ggghggg"],"rock":["..KKKK..",".KSSSsK.","KSSsssMK","KsssssMK",".KKKKKK."],"rock2":[".KKK..",".KSsK.","KSssMK","KKKKKK"],"bush":["...KKKK...","..KGGhGK..",".KGhGGGGK.","KGGGGGGgGK","KgGGgGGGgK",".KKKKKKKK."],"pine":["...K...","..KgK..","..KGK..",".KgGgK.",".KGGGK.","KgGhGgK","KGGGGGK",".KKnKK.","...n..."],"tree":["...KKKK...","..KGGhGK..",".KGhGGGGK.","KGGGGGgGGK","KgGGGGGGgK",".KgGGgGgK.","..KKnnKK..","....nn....","....nn....","...KnnK..."],"deadtree":["..K...K.",".KnK.KnK","..KnKnK.","...KnK..","...KnK..","..KnnnK.","..KKKKK."],"mushS":[".KKK.","KRWRK","KKKKK",".KTK.",".KKK."],"fence":["K...K...K","N...N...N","NNNNNNNNN","N...N...N","NNNNNNNNN","N...N...N"],"sign":["KKKKKKK","KTTTTTK","KTKKKTK","KTTTTTK","KKKKKKK","...n...","...n..."],"bones":["E....E","KE..EK",".KEEK.",".KEEK.","KE..EK","E....E"],"lava":["..KKK...","KKRORKKK","KROYORRK","KKRRRKKK"],"pond":["....KKKKKK....","..KKCCCCCCKK..",".KCCClCCCCCCK.","KCCCCCCCClCCCK","KcCCCCCCCCCCcK",".KccCCCCCCccK.","..KKccccccKK..","....KKKKKK...."],"tent":["....K....","...KRK...","..KRrRK..",".KRrRRRK.","KRRrKRRRK","KKKKKKKKK"],"house":["....KKKK....","...KrrrrK...","..KrRRRRrK..",".KrRRRRRRrK.","KKKKKKKKKKKK",".KTTTTTTTTK.",".KTKCKTTKKK.",".KTKKKTTKnK.",".KTTTTTTKnK.",".KKKKKKKKKK."],"chest":[".KKKKKK.","KNYNNYNK","KKKYYKKK","KNNYYNNK","KKKKKKKK"],"torch":["..O..",".OYO.",".KRK.","..n..","..n..","..n.."],"castle":["K.K.K....K.K.K","KSKSK....KSKSK","KSSSKKKKKKSSSK","KSSSSSSSSSSSSK","KSKSSSSSSSSKSK","KSSSSSKKSSSSSK","KSSSSKnnKSSSSK","KKKKKKKKKKKKKK"]}};
