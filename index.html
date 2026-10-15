@@ -1347,7 +1347,14 @@ const PROJECTS = [
         ]
       }
     ],
-    "contents": [],
+    "contents": [
+      {
+        "name": "서버 시작 화면",
+        "desc": "",
+        "media": "assets/server/mafia-start.png",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
+      }
+    ],
     "tools": [],
     "overviewMedia": "",
     "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
@@ -2710,9 +2717,9 @@ const SKILLS = [
   }
 ];
 
-// 클라이언트 콘텐츠도 기술 목록에 추가 (맞짱은 기술 목록에서 제외)
+// 클라이언트 콘텐츠도 기술 목록에 추가 (맞짱, 마피아 서버는 기술 목록에서 제외)
 PROJECTS.forEach(p => {
-  if(p.id === 'msw') return;
+  if(p.id === 'msw' || p.id === 'mafia') return;
   p.contents.forEach(it => {
     if(!SKILLS.some(s => s.name === it.name)) SKILLS.push({name:it.name, cat:'클라이언트 콘텐츠', project:p.id, desc:it.desc, media:it.media});
   });
