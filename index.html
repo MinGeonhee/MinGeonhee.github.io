@@ -1310,7 +1310,7 @@ const PROJECTS = [
     "overview": [
       "Winsock TCP와 C++로 제작 중인 7인 CMD 마피아 게임 서버입니다. 먼저 만든 콘솔 채팅 서버를 확장해, 방(Room) 단위로 게임 상태를 관리하고 규칙 판정은 서버가 담당하는 구조로 설계하고 있습니다.",
       "채팅 서버에서 main 함수에 몰려 있던 코드를 Server / Client / Room / Game 클래스로 나누고, 소켓 관리와 패킷 처리는 별도 정적 라이브러리(NetLib)로 분리했습니다.",
-      "현재 NetLib, 서버 접속 처리와 관리 화면, 클라이언트 화면 흐름(인트로 → 로그인 → 로비)까지 구현했으며, 이후 직업 배정, 낮 / 밤 진행, 투표, 승리 조건 판정을 상태 머신으로 구현할 예정입니다."
+      "현재 NetLib 송수신 구조(접속자별 수신 스레드, 받기 / 보내기 분리, 고유 ID 할당), 클라이언트 흐름(인트로 → 서버 접속 → 로그인 → 로비)과 로그인 패킷 처리까지 구현했으며, 이후 직업 배정, 낮 / 밤 진행, 투표, 승리 조건 판정을 상태 머신으로 구현할 예정입니다."
     ],
     "tech": [
       {
@@ -1336,13 +1336,14 @@ const PROJECTS = [
         ]
       },
       {
-        "name": "이벤트 큐 기반 스레드 모델 (구현 중)",
-        "desc": "Accept와 수신 스레드는 받은 것을 이벤트 큐에 넣기만 하고, 접속자 목록과 게임 상태는 로직 스레드 하나에서만 수정하도록 설계했습니다.",
+        "name": "이벤트 큐 기반 스레드 모델",
+        "desc": "Accept 스레드와 접속자별 수신 스레드는 받은 것을 받기 큐에 넣기만 하고, 접속자 목록과 게임 상태는 로직 스레드 하나에서만 수정합니다. 보낼 패킷은 락 없는 보내기 목록에 모았다가 같은 프레임 끝에 전송합니다.",
         "media": "assets/server/mafia-flow.png",
         "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf",
         "points": [
           "동기화가 필요한 지점을 이벤트 큐 하나로 제한",
-          "로직 스레드가 큐를 swap으로 한 번에 가져와 락 잡는 시간 최소화",
+          "받기는 Pre_Update, 보내기는 Late_Update에서 처리해 응답이 같은 프레임 안에 나감",
+          "접속 종료는 수신 스레드의 recv 실패 한 경로로만 처리 (로그 → 접속자 삭제 → 게임 알림)",
           "끊긴 클라이언트의 고유 ID는 재사용하지 않아 남은 이벤트가 엉뚱한 사람에게 처리되는 것을 방지"
         ]
       }
@@ -1350,19 +1351,37 @@ const PROJECTS = [
     "contents": [
       {
         "name": "클라이언트 인트로",
-        "desc": "로고 애니메이션 후 아무 키나 누르면 로그인 화면으로 넘어갑니다.",
+        "desc": "로고 애니메이션 후 아무 키나 누르면 서버 접속 화면으로 넘어갑니다.",
         "media": "assets/server/mafia-intro.png",
         "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
       },
       {
+        "name": "서버 접속",
+        "desc": "서버 IP / 포트를 입력해 접속합니다. 기본값이 미리 채워져 있고, 실패하면 사유를 표시하고 다시 입력받습니다.",
+        "media": "assets/server/mafia-connect.png",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
+      },
+      {
+        "name": "접속 연출",
+        "desc": "접속이 너무 빨라 화면이 깜빡 넘어가지 않도록 최소 1.5초 동안 진행 바를 보여줍니다.",
+        "media": "assets/server/mafia-connecting.png",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
+      },
+      {
         "name": "로그인",
-        "desc": "닉네임 / 서버 IP / 포트를 입력하고 접속합니다. 접속에 실패하면 사유를 표시하고 다시 입력받습니다.",
+        "desc": "연결된 서버와 서버가 정해준 내 번호를 보여주고, 닉네임으로 로그인합니다.",
         "media": "assets/server/mafia-login.png",
         "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
       },
       {
+        "name": "로그인 실패",
+        "desc": "서버가 닉네임을 검사해 보낸 실패 이유를 문구로 보여줍니다. 연결은 유지한 채 다시 입력받습니다.",
+        "media": "assets/server/mafia-login-failed.png",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
+      },
+      {
         "name": "로비",
-        "desc": "방 목록을 ↑↓로 선택하고, 오른쪽에 접속 중인 사람을 표시합니다.",
+        "desc": "내 번호와 방 목록(↑↓ 선택), 접속 중인 사람을 표시합니다.",
         "media": "assets/server/mafia-lobby.png",
         "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
       },
@@ -1374,7 +1393,7 @@ const PROJECTS = [
       },
       {
         "name": "서버 관리 화면",
-        "desc": "접속자 목록과 접속 / 거절 로그를 실시간으로 보여주고, F5로 접속 요청을 켜고 끕니다.",
+        "desc": "접속자 목록과 접속 / 거절 / 종료 로그를 실시간으로 보여주고, F5로 접속 요청을 켜고 끕니다.",
         "media": "assets/server/mafia-server-main.png",
         "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
       }
