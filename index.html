@@ -184,7 +184,7 @@ html.lock .dots{visibility:hidden}
 .tl-row{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--line)}
 .tl-row time,.tl-row .tl-label{color:var(--sub);font-size:15px;padding-top:3px}
 .stack-title{margin:64px 0 16px;font-size:24px;letter-spacing:-.02em}
-/* 이력: 몬스터·그리드 위에서도 읽히도록 판을 깔고, 걸어온 길을 도트 길로 표시 */
+/* 이력: 몬스터, 그리드 위에서도 읽히도록 판을 깔고, 걸어온 길을 도트 길로 표시 */
 #history > .wrap{width:calc(100% - 32px);max-width:1136px;background:color-mix(in srgb,var(--soft) 94%,transparent);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:40px clamp(20px,4vw,48px)}
 /* 프로필 보유 기술: 분류 탭 + 태그 */
 .hero-stack{margin:20px 0 0}
@@ -599,7 +599,7 @@ main{position:relative;z-index:1}
 .detail .facts dd{font-size:16px}
 .d-notion{background:#fff;color:var(--ink)}
 .d-notion:hover{background:var(--hint);border-color:var(--ink);color:var(--ink)}
-/* 기술·콘텐츠 항목: 왼쪽 그림, 오른쪽 설명 */
+/* 기술, 콘텐츠 항목: 왼쪽 그림, 오른쪽 설명 */
 .detail .items{grid-template-columns:1fr;gap:22px}
 .detail .item{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:24px;align-items:start;padding:18px;border:2px solid var(--line);background:#fff}
 .detail .item.no-media{grid-template-columns:1fr}
@@ -685,20 +685,20 @@ main{position:relative;z-index:1}
   <section class="snap" id="history">
     <div class="wrap">
       <div class="sec-head"><h2>이력</h2></div>
-      <div class="road-head"><p class="road-intro">스크롤을 내리면 용사가 지금까지 걸어온 길을 헤쳐가요 · 칸에 마우스를 올리면 자세히 보여요</p>
+      <div class="road-head"><p class="road-intro">스크롤을 내리면 용사가 지금까지 걸어온 길을 헤쳐가요, 칸에 마우스를 올리면 자세히 보여요</p>
         <button class="road-reset" id="roadReset" type="button">↺ 처음부터 다시</button></div>
       <div class="road" id="road"></div>
       <h3 class="stack-title">이력 한눈에 보기</h3>
       <div class="timeline summary">
         <div class="tl-row"><span class="tl-label">학력</span><ul class="sum-list"><li><time>2019.03 – 2025.02</time><span>나사렛대학교 IT융합학부 컴퓨터소프트웨어학과 졸업 (학점 3.5 / 5.0)</span></li></ul></div>
-        <div class="tl-row"><span class="tl-label">교육</span><ul class="sum-list"><li><time>2025.03 – 재학 중</time><span>쥬신 게임 아카데미 · WinAPI, DirectX 9/11, C++ 게임 콘텐츠 제작 과정, 취업 과정 수강 중</span></li><li><time>2026.07.31</time><span>(MSW) 메이플 월드 크리에이터 온라인 부트캠프 3기 수료</span></li></ul></div>
-        <div class="tl-row"><span class="tl-label">프로젝트</span><ul class="sum-list"><li><time>2026.10 – 2026.11</time><span>CMD 마피아 게임 서버 · Winsock TCP, 1인, 서버 권한 게임 로직 · 보안 테스트</span></li><li><time>2026.10</time><span>콘솔 채팅 서버 · Winsock TCP, 1인, 이벤트 큐 기반 멀티스레드 서버</span></li><li><time>2026.09 – 개발 중</time><span>맞짱 : 미니게임 배틀 · MSW (mLua), 2인, 매칭 로직·미니게임 제작</span></li><li><time>2026.01 – 2026.04</time><span>듀엣 나이트 어비스 모작 · DirectX 11 자체 엔진, 6인, 맵 툴·클라이언트 콘텐츠·엔진 구조</span></li><li><time>2025.12 – 2026.01</time><span>젤다의 전설 : 쌍둥이의 모험 · DirectX 11 자체 엔진, 1인, 엔진 구조·클라이언트 콘텐츠</span></li><li><time>2025.08 – 2025.09</time><span>위조덤 모작 · DirectX 9 자체 엔진, 4인, 맵 툴·클라이언트 콘텐츠</span></li><li><time>2025.06 – 2025.07</time><span>컵헤드 모작 · Win API, 1인, 프레임워크·콘텐츠</span></li><li><time>2024 2학기</time><span>대학교 졸업 작품 · Unity 기반 던전 RPG (팀장, 3인)</span></li></ul></div>
+        <div class="tl-row"><span class="tl-label">교육</span><ul class="sum-list"><li><time>2025.03 – 재학 중</time><span>쥬신 게임 아카데미, WinAPI, DirectX 9/11, C++ 게임 콘텐츠 제작 과정, 취업 과정 수강 중</span></li><li><time>2026.07.31</time><span>(MSW) 메이플 월드 크리에이터 온라인 부트캠프 3기 수료</span></li></ul></div>
+        <div class="tl-row"><span class="tl-label">프로젝트</span><ul class="sum-list"><li><time>2026.10 – 2026.11</time><span>CMD 마피아 게임 서버, Winsock TCP, 1인, 서버 권한 게임 로직, 보안 테스트</span></li><li><time>2026.10</time><span>콘솔 채팅 서버, Winsock TCP, 1인, 이벤트 큐 기반 멀티스레드 서버</span></li><li><time>2026.09 – 개발 중</time><span>맞짱 : 미니게임 배틀, MSW (mLua), 2인, 매칭 로직, 미니게임 제작</span></li><li><time>2026.01 – 2026.04</time><span>듀엣 나이트 어비스 모작, DirectX 11 자체 엔진, 6인, 맵 툴, 클라이언트 콘텐츠, 엔진 구조</span></li><li><time>2025.12 – 2026.01</time><span>젤다의 전설 : 쌍둥이의 모험, DirectX 11 자체 엔진, 1인, 엔진 구조, 클라이언트 콘텐츠</span></li><li><time>2025.08 – 2025.09</time><span>위조덤 모작, DirectX 9 자체 엔진, 4인, 맵 툴, 클라이언트 콘텐츠</span></li><li><time>2025.06 – 2025.07</time><span>컵헤드 모작, Win API, 1인, 프레임워크, 콘텐츠</span></li><li><time>2024 2학기</time><span>대학교 졸업 작품, Unity 기반 던전 RPG (팀장, 3인)</span></li></ul></div>
         <div class="tl-row"><span class="tl-label">교내 활동</span><ul class="sum-list"><li><time>2024-1</time><span>대학교 성적 장학금</span></li><li><time>2023-2</time><span>대학교 성적 장학금</span></li><li><time>2019-2</time><span>대학교 성적 장학금</span></li><li><time>2023 – 2024</time><span>학과 개발 동아리 임원</span></li><li><time>2025.02 – 2025.03</time><span>학사 행정 지원</span></li></ul></div>
-        <div class="tl-row"><span class="tl-label">대외 활동</span><ul class="sum-list"><li><time>2026.08.20</time><span>2026 언리얼 페스트 오프라인 참여</span></li><li><time>2026</time><span>2026 NDC 온라인 참여 · 메이플스토리 월드 자체 LLM, 마비노기 모바일 카메라 시스템 설계, AI 시대의 성장 세션</span></li><li><time>2026.04.15 · 04.22</time><span>취업 준비 콘서트 일자리 톡톡 : 넷마블 · 펄어비스</span></li></ul></div>
-        <div class="tl-row"><span class="tl-label">자격 · 병역</span><ul class="sum-list"><li><time>2026.09.09</time><span>2026년 정기 기사 3회 필기 (한국산업인력공단)</span></li><li><time>2020.08 – 2022.02</time><span>육군 병장 만기 전역 (예비군 조교)</span></li><li><time>2019.02</time><span>자동차운전면허 1종 보통</span></li></ul></div>
-        <div class="tl-row"><span class="tl-label">공부 (책 · 강의)</span><ul class="sum-list"><li><time>2026.09 – 진행 중</time><span>윤성우 열혈 TCP/IP 소켓 프로그래밍</span></li><li><time>2026.05</time><span>윤성우의 열혈 자료구조 (선형 자료구조, 정렬, 탐색, 재귀)</span></li><li><time>2026.04</time><span>인프런 [C++과 언리얼로 만드는 MMORPG 게임 개발 시리즈] Part 1</span></li><li><time>2025.04 – 2025.05</time><span>뇌를 자극하는 C++ STL</span></li><li><time>2025.03 – 2025.04</time><span>윤성우의 열혈 C++ 프로그래밍</span></li></ul></div>
+        <div class="tl-row"><span class="tl-label">대외 활동</span><ul class="sum-list"><li><time>2026.08.20</time><span>2026 언리얼 페스트 오프라인 참여</span></li><li><time>2026</time><span>2026 NDC 온라인 참여, 메이플스토리 월드 자체 LLM, 마비노기 모바일 카메라 시스템 설계, AI 시대의 성장 세션</span></li><li><time>2026.04.15, 04.22</time><span>취업 준비 콘서트 일자리 톡톡 : 넷마블, 펄어비스</span></li></ul></div>
+        <div class="tl-row"><span class="tl-label">자격, 병역</span><ul class="sum-list"><li><time>2026.09.09</time><span>2026년 정기 기사 3회 필기 (한국산업인력공단)</span></li><li><time>2020.08 – 2022.02</time><span>육군 병장 만기 전역 (예비군 조교)</span></li><li><time>2019.02</time><span>자동차운전면허 1종 보통</span></li></ul></div>
+        <div class="tl-row"><span class="tl-label">공부 (책, 강의)</span><ul class="sum-list"><li><time>2026.09 – 진행 중</time><span>윤성우 열혈 TCP/IP 소켓 프로그래밍</span></li><li><time>2026.05</time><span>윤성우의 열혈 자료구조 (선형 자료구조, 정렬, 탐색, 재귀)</span></li><li><time>2026.04</time><span>인프런 [C++과 언리얼로 만드는 MMORPG 게임 개발 시리즈] Part 1</span></li><li><time>2025.04 – 2025.05</time><span>뇌를 자극하는 C++ STL</span></li><li><time>2025.03 – 2025.04</time><span>윤성우의 열혈 C++ 프로그래밍</span></li></ul></div>
         <div class="tl-row"><span class="tl-label">사회 활동</span><ul class="sum-list"><li><time>2024.06 – 2025.03</time><span>건담 베이스 (반다이남코코리아) 아르바이트</span></li><li><time>2024.11 – 2024.12</time><span>무료 급식 봉사, 도서관 서가 정리</span></li><li><time>2024.04 – 2024.05</time><span>아름다운 가게 매장 운영 지원 봉사</span></li></ul></div>
-        <div class="tl-row"><span class="tl-label">기타</span><ul class="sum-list"><li><time>2019.12</time><span>제3회 수원시 킥복싱 협회장기 대회 우승 · 킥복싱 1단 (2019.09)</span></li><li><time>2019 · 2017</time><span>넥슨 카트라이더 리그 시즌1 팀전(주장) · KeSPA Cup 개인전 예선 참가</span></li></ul></div>
+        <div class="tl-row"><span class="tl-label">기타</span><ul class="sum-list"><li><time>2019.12</time><span>제3회 수원시 킥복싱 협회장기 대회 우승, 킥복싱 1단 (2019.09)</span></li><li><time>2019, 2017</time><span>넥슨 카트라이더 리그 시즌1 팀전(주장), KeSPA Cup 개인전 예선 참가</span></li></ul></div>
       </div>
       <div class="contact" id="contact">
       <h2>더 궁금한 점이 있다면<br>편하게 연락주세요.</h2>
@@ -804,7 +804,7 @@ const PROJECTS = [
         "points": [
           "UI Object가 UI Transform, Image, Animation 같은 Component를 보유",
           "UI Object는 목적별 UI Layer로 묶이고 Canvas가 Layer와 Viewport, 직교 투영 행렬을 관리",
-          "UIManager가 활성화된 Canvas만 Update·Render",
+          "UIManager가 활성화된 Canvas만 Update, Render",
           "UI 전용 Blend State와 NoDepth State로 렌더링하고 Fade, Blink, 이동 연출을 Component로 조합"
         ]
       },
@@ -841,7 +841,7 @@ const PROJECTS = [
         "notion": "https://conscious-sun-4a1.notion.site/8b42ae810b6683ecb57f81c7d4872462",
         "intent": "상태 변화로 애니메이션이 자주 바뀌면서 자세 차이가 큰 전환에서 동작이 끊기거나 모델이 튀어 보이는 현상이 있었습니다.",
         "points": [
-          "Change_Animation()에서 이전·현재 애니메이션을 갱신하고 전환 시점의 Bone Pose 저장",
+          "Change_Animation()에서 이전, 현재 애니메이션을 갱신하고 전환 시점의 Bone Pose 저장",
           "Play_Animation()에서 블렌딩 시간을 누적해 Blend Ratio 계산",
           "Channel 단위로 저장한 Pose와 현재 Pose를 보간해 각 Bone에 적용",
           "모든 Bone의 Combined Matrix를 갱신해 Skeleton 계층에 반영"
@@ -862,7 +862,7 @@ const PROJECTS = [
     ],
     "contents": [
       {
-        "name": "링크 / 크링, 근거리·원거리 플레이어",
+        "name": "링크 / 크링, 근거리, 원거리 플레이어",
         "desc": "링크는 가까이서 검과 방패로 싸우고, 크링은 거리를 유지하며 원거리에서 지원하도록 역할을 나눈 2인 협력 전투 콘텐츠입니다.",
         "media": "assets/zelda/link-kring.mp4",
         "notion": "https://conscious-sun-4a1.notion.site/7792ae810b66838b8f7181a7c0b42826",
@@ -874,14 +874,14 @@ const PROJECTS = [
         ]
       },
       {
-        "name": "던전·필드 몬스터 8종",
+        "name": "던전, 필드 몬스터 8종",
         "desc": "근접 압박형, 원거리 견제형, 추적형 등 이동과 공격 방식을 구분한 8종의 몬스터로, 전투 거리와 타깃을 상황에 맞게 고르도록 설계했습니다.",
         "media": "assets/zelda/monsters.mp4",
         "notion": "https://conscious-sun-4a1.notion.site/0bb2ae810b66826ab76a816cf56803e6",
         "points": [
           "쿠리보: 배회하다 플레이어를 발견하면 추적하는 근접 압박형",
           "옥토록: 바라보는 방향으로 바위를 쏘는 원거리 견제형",
-          "대기·순찰, 추적, 공격 같은 행동을 State로 구성",
+          "대기, 순찰, 추적, 공격 같은 행동을 State로 구성",
           "8종 전체의 행동은 Notion에 정리"
         ]
       },
@@ -904,21 +904,21 @@ const PROJECTS = [
         "notion": "https://conscious-sun-4a1.notion.site/be12ae810b6683b08d4001a16ef46c9c",
         "points": [
           "보물상자: 상호작용 시 열림 애니메이션 후 보상 드롭",
-          "잠긴 문·블록: 방 열쇠 1개를 소모해 개방",
+          "잠긴 문, 블록: 방 열쇠 1개를 소모해 개방",
           "잠금 석상과 셔터: 같은 이벤트 인덱스로 연결해 Event Bus로 개방",
           "발판 스위치는 타일 렌더 상태와 내비게이션 셀을 함께 변경, 블레이드 트랩은 탐지 후 공격"
         ]
       },
       {
         "name": "이펙트 시스템",
-        "desc": "텍스처·메시 이펙트를 공통 데이터로 관리하고 위치 고정, 캐릭터 부착, 본 소켓 부착 방식을 나눠, 공격·피격·차징 같은 순간을 바로 알아볼 수 있게 했습니다.",
+        "desc": "텍스처, 메시 이펙트를 공통 데이터로 관리하고 위치 고정, 캐릭터 부착, 본 소켓 부착 방식을 나눠, 공격, 피격, 차징 같은 순간을 바로 알아볼 수 있게 했습니다.",
         "media": "assets/zelda/effects.webp",
         "notion": "https://conscious-sun-4a1.notion.site/8622ae810b66833b82c18170664b8f11",
         "points": [
-          "링크: 일반 공격, 차징, 슬래쉬, 방패 피격 이펙트를 캐릭터·무기 본 소켓에 부착",
-          "크링: 화살·마법 투사체 위치를 매 프레임 이펙트에 반영",
+          "링크: 일반 공격, 차징, 슬래쉬, 방패 피격 이펙트를 캐릭터, 무기 본 소켓에 부착",
+          "크링: 화살, 마법 투사체 위치를 매 프레임 이펙트에 반영",
           "피격과 잔디, 항아리, 광석 파괴 때 위치 기반 이펙트 생성",
-          "생성 요청은 큐에 넣어 프레임마다 하나씩 처리하고 레이어 ID로 조회·삭제"
+          "생성 요청은 큐에 넣어 프레임마다 하나씩 처리하고 레이어 ID로 조회, 삭제"
         ]
       }
     ],
@@ -982,7 +982,7 @@ const PROJECTS = [
           "시퀀스 이름과 KeyFrame을 JSON에 저장하고 Cinematic Manager가 이름별로 관리",
           "TriggerBox나 게임 이벤트가 시퀀스 Key로 재생 요청",
           "Position과 Rotation을 Linear, SmoothStep, Curve 방식으로 보간",
-          "구간 출발·도착 시점에 이벤트를 보내고, 끝나면 원래 Main Camera로 복귀"
+          "구간 출발, 도착 시점에 이벤트를 보내고, 끝나면 원래 Main Camera로 복귀"
         ]
       },
       {
@@ -1017,7 +1017,7 @@ const PROJECTS = [
         "media": "assets/duet/water.mp4",
         "notion": "https://conscious-sun-4a1.notion.site/3c42ae810b668071831ce5ce8bd0d18a",
         "points": [
-          "두 장의 Normal을 다른 속도로 흘리고 왜곡·반짝임을 함께 적용",
+          "두 장의 Normal을 다른 속도로 흘리고 왜곡, 반짝임을 함께 적용",
           "수면 UV 이동, 왜곡, 반짝임, 리플 데이터를 하나의 Constant Buffer로 전달",
           "플레이어가 일정 속도 이상 움직이면 0.25초 간격으로 리플 위치 등록",
           "리플마다 경과 시간을 누적해 여러 개가 동시에 퍼짐"
@@ -1029,14 +1029,14 @@ const PROJECTS = [
         "media": "assets/duet/trigger.png",
         "notion": "https://conscious-sun-4a1.notion.site/3c42ae810b66803d9aa4c6647e7f41b5",
         "points": [
-          "TriggerBox는 Trigger Collider와 Static RigidBody로 진입·이탈만 감지",
+          "TriggerBox는 Trigger Collider와 Static RigidBody로 진입, 이탈만 감지",
           "몬스터 스폰, 웨이브(UI 타이머 연동), 시네마틱 카메라, 튜토리얼 UI, 다음 레벨 이동",
           "파생 클래스가 담당 이벤트만 다르게 처리해 구간을 독립적으로 배치",
-          "퀘스트와 연결된 TriggerBox는 Enter·Exit 잠금으로 반복 실행 방지"
+          "퀘스트와 연결된 TriggerBox는 Enter, Exit 잠금으로 반복 실행 방지"
         ]
       },
       {
-        "name": "원형 텍스처·채널 패킹 스카이박스",
+        "name": "원형 텍스처, 채널 패킹 스카이박스",
         "desc": "원형과 사각 텍스처를 모두 지원하는 스카이박스에, 채널 패킹된 구름 Mask로 하늘, 구름, 그림자, 하이라이트 색을 합성했습니다.",
         "media": "assets/duet/skybox.png",
         "notion": "https://conscious-sun-4a1.notion.site/3c52ae810b668060bc10c03d23f8036a",
@@ -1062,7 +1062,7 @@ const PROJECTS = [
   {
     "id": "wizordum",
     "title": "위조덤(Wizordum) 모작",
-    "sub": "타일·큐브 3D 공간의 1인칭 던전 액션 팀 프로젝트",
+    "sub": "타일, 큐브 3D 공간의 1인칭 던전 액션 팀 프로젝트",
     "engine": "DirectX 9",
     "team": "4인",
     "period": "2025.08 – 2025.09",
@@ -1077,13 +1077,13 @@ const PROJECTS = [
     "media": "assets/wizordum/highlight.mp4",
     "overview": [
       "DirectX 9과 C++ 기반 자체 엔진을 활용하여 제작한 위조덤(Wizordum) 모작 팀 포트폴리오 프로젝트입니다.",
-      "기존 Win API에서 활용한 2D 좌표계를 넘어 2D 스프라이트 텍스처를 타일·큐브 형태의 3D 공간에 적용하며, 좌표계, UV, 정점 버퍼, 변환 행렬 등 3D 게임 엔진의 기본 구조와 렌더링 흐름을 이해했습니다.",
+      "기존 Win API에서 활용한 2D 좌표계를 넘어 2D 스프라이트 텍스처를 타일, 큐브 형태의 3D 공간에 적용하며, 좌표계, UV, 정점 버퍼, 변환 행렬 등 3D 게임 엔진의 기본 구조와 렌더링 흐름을 이해했습니다.",
       "위조덤은 근접, 원거리의 다양한 공격으로 던전을 탐험하고 몬스터를 처치하며 스테이지를 진행하는 1인칭 액션 어드벤처 게임입니다. 원작의 플레이어, 몬스터, 던전, 전투 시스템을 참고해 구현했고, 원작에는 없는 숨겨진 기믹과 맵 구조를 추가했습니다."
     ],
     "tech": [
       {
-        "name": "UV 좌표 기반 타일·큐브 설계",
-        "desc": "32×32 텍스처 아틀라스에서 고른 셀의 중심 UV를 기준으로 타일과 큐브의 정점 UV를 계산하는 기능입니다. 큐브는 면마다 다른 셀과 수평·수직 반전을 지정할 수 있습니다.",
+        "name": "UV 좌표 기반 타일, 큐브 설계",
+        "desc": "32×32 텍스처 아틀라스에서 고른 셀의 중심 UV를 기준으로 타일과 큐브의 정점 UV를 계산하는 기능입니다. 큐브는 면마다 다른 셀과 수평, 수직 반전을 지정할 수 있습니다.",
         "media": "assets/wizordum/uv-tile-cube.png",
         "notion": "https://conscious-sun-4a1.notion.site/3c52ae810b66805fa5e5c31e2747fdd9",
         "intent": "오브젝트마다 텍스처를 따로 준비하지 않고, 하나의 아틀라스에서 필요한 셀을 골라 재사용하고 싶었습니다.",
@@ -1112,7 +1112,7 @@ const PROJECTS = [
     "tools": [
       {
         "name": "큐브 기반 맵툴",
-        "desc": "타일·큐브로 공간을 만들고 Ray Picking으로 면을 골라 텍스처를 입힌 뒤, 오브젝트·이벤트·문을 배치해 Client가 그대로 재현하는 JSON 맵으로 저장하는 ImGui 레벨 제작 도구입니다.",
+        "desc": "타일, 큐브로 공간을 만들고 Ray Picking으로 면을 골라 텍스처를 입힌 뒤, 오브젝트, 이벤트, 문을 배치해 Client가 그대로 재현하는 JSON 맵으로 저장하는 ImGui 레벨 제작 도구입니다.",
         "media": "assets/wizordum/cube-maptool.png",
         "notion": "https://conscious-sun-4a1.notion.site/3c52ae810b6681f4ac0cca63b0b892f9"
       }
@@ -1142,7 +1142,7 @@ const PROJECTS = [
     ],
     "tech": [
       {
-        "name": "선분·사각형 기반 지형 충돌 시스템",
+        "name": "선분, 사각형 기반 지형 충돌 시스템",
         "desc": "선분과 사각형으로 만든 지형 데이터로 플레이어의 착지, 경사 이동, 벽 충돌을 처리하는 2D 지형 충돌 시스템입니다.",
         "media": "assets/cuphead/terrain-collision.mp4",
         "notion": "https://conscious-sun-4a1.notion.site/3c52ae810b6680edac02e2017d14c3bd",
@@ -1150,7 +1150,7 @@ const PROJECTS = [
         "points": [
           "스테이지 시작 시 LineManager와 RectManager가 파일에서 지형 데이터 로드",
           "선분 충돌은 현재 x좌표의 선분 y값으로 착지 위치 보정",
-          "사각형 충돌은 x·y 침투량 중 작은 축으로 밀어내 벽에 파고드는 현상 방지",
+          "사각형 충돌은 x, y 침투량 중 작은 축으로 밀어내 벽에 파고드는 현상 방지",
           "충돌 데이터를 맵 이미지와 분리해 스테이지마다 다른 지형 적용"
         ]
       }
@@ -1177,7 +1177,7 @@ const PROJECTS = [
           "플랫폼 상단 충돌 선분 위에 플레이어가 있는지 확인",
           "탑승 중이면 하강 속도를 점점 줄이며 아래로 이동",
           "내리면 시작 높이를 넘지 않게 원래 자리로 복귀",
-          "고정형·이동형 플랫폼 타입을 나눠 확장 가능하게 구성"
+          "고정형, 이동형 플랫폼 타입을 나눠 확장 가능하게 구성"
         ]
       }
     ],
@@ -1300,7 +1300,7 @@ const PROJECTS = [
   {
     "id": "mafia",
     "title": "CMD 마피아 게임 서버",
-    "sub": "Winsock TCP로 만든 7인 마피아 게임 서버 (서버 권한 판정 · 보안 테스트)",
+    "sub": "Winsock TCP로 만든 7인 마피아 게임 서버 (서버 권한 판정, 보안 테스트)",
     "engine": "Winsock (C++)",
     "team": "1인",
     "period": "2026.10 – 2026.11",
@@ -1313,12 +1313,17 @@ const PROJECTS = [
     ],
     "git": "https://github.com/MinGeonhee/Winsock_MafiaServer",
     "youtube": "VfxNZ-3PkOE",
+    "extraVideo": {
+      "label": "피드백 적용 후 AI 7인 테스트 영상 보기",
+      "url": "https://www.youtube.com/watch?v=cTU04o3iR_U"
+    },
     "media": "assets/server/mafia-highlight.gif",
     "thumb": "assets/server/mafia-room.png",
     "overview": [
       "Winsock TCP와 C++로 제작한 7인 CMD 마피아 게임 서버입니다. 먼저 만든 콘솔 채팅 서버를 확장해, 방(Room) 단위로 게임 상태를 관리하고 규칙 판정은 서버가 담당하는 구조로 설계했습니다.",
       "채팅 서버에서 main 함수에 몰려 있던 코드를 Server / Client / Room / Game 클래스로 나누고, 소켓 관리와 패킷 처리는 별도 정적 라이브러리(NetLib)로 분리했습니다.",
-      "NetLib 송수신 구조, 클라이언트 흐름(인트로 → 서버 접속 → 로그인 → 로비 → 방), 7종 직업과 낮 / 밤 · 투표 · 찬반 · 승패를 서버가 판정하는 게임 로직까지 구현했습니다. 이어서 일부러 취약한 빌드를 만들어 메모리 검색과 조작 패킷 14종으로 직접 공격해 보고, 숨길 정보는 보내지 않고 모든 요청을 서버가 다시 판정하는 구조로 막히는 것을 확인했습니다."
+      "NetLib 송수신 구조, 클라이언트 흐름(인트로 → 서버 접속 → 로그인 → 로비 → 방), 7종 직업과 낮 / 밤, 투표, 찬반, 승패를 서버가 판정하는 게임 로직까지 구현했습니다. 이어서 일부러 취약한 빌드를 만들어 메모리 검색과 조작 패킷 14종으로 직접 공격해 보고, 숨길 정보는 보내지 않고 모든 요청을 서버가 다시 판정하는 구조로 막히는 것을 확인했습니다.",
+      "외부 인원 7명과 플레이 테스트를 진행한 뒤 피드백을 반영해, 직업별 밤 능력 화면, 죽은 사람 채팅, 사망과 연행 구분, 게임 중 나가기 처리를 추가했습니다."
     ],
     "tech": [
       {
@@ -1327,7 +1332,7 @@ const PROJECTS = [
         "media": "",
         "notion": "https://conscious-sun-4a1.notion.site/4042ae810b6681f49a4fc85fe05f1d52",
         "points": [
-          "CSocket / CAddress가 IPv4 · IPv6 주소와 Bind, Listen, Accept, Connect를 감쌈",
+          "CSocket / CAddress가 IPv4, IPv6 주소와 Bind, Listen, Accept, Connect를 감쌈",
           "생성자는 private, 초기화가 실패하면 Create가 nullptr 반환",
           "소유권 이동은 std::move로 명시하고, 빌려 쓰는 함수는 raw 포인터로 받음"
         ]
@@ -1357,14 +1362,14 @@ const PROJECTS = [
       },
       {
         "name": "서버 권한 데이터와 방",
-        "desc": "플레이어 · 방 객체는 서버에만 두고, 클라에는 패킷마다 필요한 정보만 골라 보냅니다. 방은 자리 7칸으로 관리하고, 들어오거나 나가면 방에 남은 사람에게 바로 알립니다.",
+        "desc": "플레이어, 방 객체는 서버에만 두고, 클라에는 패킷마다 필요한 정보만 골라 보냅니다. 방은 자리 7칸으로 관리하고, 들어오거나 나가면 방에 남은 사람에게 바로 알립니다.",
         "media": "assets/server/mafia-room.png",
         "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf",
         "points": [
           "Protocol에는 용도별 패킷 구조체만 두고, 서버 내부 객체(CPlayer, CRoom)는 클라에 노출하지 않음",
           "방 만들기 / 입장이 같은 응답(방 정보 + 자리 7칸)을 받아 클라 처리 경로를 하나로",
-          "채팅 · 입장 요청의 \"누가\"는 연결 키로 판단하고, 방 번호처럼 서버가 아는 값은 클라에게서 받지 않음",
-          "로비 목록은 10초 폴링, 방 안 변화(입장 · 퇴장 · 채팅)는 서버가 즉시 푸시"
+          "채팅, 입장 요청의 \"누가\"는 연결 키로 판단하고, 방 번호처럼 서버가 아는 값은 클라에게서 받지 않음",
+          "로비 목록은 10초 폴링, 방 안 변화(입장, 퇴장, 채팅)는 서버가 즉시 푸시"
         ]
       },
       {
@@ -1375,8 +1380,9 @@ const PROJECTS = [
         "points": [
           "프레임 시작에 읽은 시각 하나를 방 → 로직에 내려 \"지금 − 시작 ≥ 제한 시간\"으로 단계 전환",
           "밤 판정 순서 : 마피아 → 경호원 → 군인 (패킷 도착 순서와 무관)",
-          "대통령 면책 · 찬반 연행 · 사람이 빠질 때마다 승패 판정",
-          "로직은 연결 키를 모르고 방은 직업을 모름 (자리 번호로만 결과 전송)"
+          "대통령 면책, 찬반 연행, 사람이 빠질 때마다 승패 판정",
+          "로직은 연결 키를 모르고 방은 직업을 모름 (자리 번호로만 결과 전송)",
+          "게임 중 나가면 사망 처리 후 승패를 다시 판정하고, 승패가 나면 연출 없이 바로 결과 창으로 이동"
         ]
       },
       {
@@ -1387,17 +1393,17 @@ const PROJECTS = [
         "points": [
           "① 머리 크기 → ② 머리의 직업으로 정한 구조체 크기 → ③ 그 자리의 실제 직업 순서로 검증",
           "보낸 사람의 자리는 패킷에 싣지 않고 연결 키로 서버가 찾음",
-          "조사 · 영매 · 배신자 결과는 본인에게만, 공지 · 밤 결과는 방 전원에게"
+          "조사, 영매, 배신자 결과는 본인에게만, 공지, 밤 결과는 방 전원에게"
         ]
       },
       {
-        "name": "서버 검증 · 정보 은닉 (보안 테스트)",
+        "name": "서버 검증, 정보 은닉 (보안 테스트)",
         "media": "assets/server/mafia-reject-log.png",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b6681f69646f727edc1ca72",
         "desc": "전원 직업을 보내고 화면에서만 가린 취약 빌드를 일부러 만들어 메모리 검색으로 마피아를 찾아낸 뒤, 자기 직업만 보내도록 고쳐 같은 검색이 실패하는 것을 확인했습니다. 조작한 패킷 14종도 직접 보내 모두 거부되는 것을 서버 로그로 확인했습니다.",
         "points": [
           "숨길 정보는 보내지 않음 : 시작 패킷을 사람마다 따로, 게임 중엔 자리를 섞고 이름 대신 \"N번\"",
-          "모든 요청을 연결 키 · 단계 · 생존 · 실제 직업으로 서버가 다시 판정",
+          "모든 요청을 연결 키, 단계, 생존, 실제 직업으로 서버가 다시 판정",
           "버린 요청은 \"거부 [능력] 직업 불일치\"처럼 이유를 서버 로그에 남김"
         ]
       },
@@ -1409,7 +1415,7 @@ const PROJECTS = [
         "points": [
           "같은 값이어도 저장할 때마다 메모리 모양이 달라 값 검색이 통하지 않음",
           "연산자 오버로딩으로 기존 코드(switch, ==, 대입)를 고치지 않고 타입만 교체",
-          "한계 : 꺼낸 순간 · 함수 후킹은 못 막음 → 판정은 결국 서버가 함"
+          "한계 : 꺼낸 순간, 함수 후킹은 못 막음 → 판정은 결국 서버가 함"
         ]
       }
     ],
@@ -1418,7 +1424,7 @@ const PROJECTS = [
         "name": "게임 하이라이트",
         "media": "assets/server/mafia-highlight.gif",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b66810fb973e371c4d7ca7d",
-        "desc": "방 시작 → 토론 → 밤 습격 · 경호원 막기 · 군인 버팀 → 대통령 면책 → 마피아 승리까지 한 판의 주요 장면입니다."
+        "desc": "방 시작 → 토론 → 밤 습격, 경호원 막기, 군인 버팀 → 대통령 면책 → 마피아 승리까지 한 판의 주요 장면입니다."
       },
       {
         "name": "방 채팅",
@@ -1428,9 +1434,9 @@ const PROJECTS = [
       },
       {
         "name": "마피아 : 처치 대상 고르기",
-        "media": "assets/server/mafia-job-mafia.png",
+        "media": "assets/server/mafia-night-mafia.png",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b66810fb973e371c4d7ca7d",
-        "desc": "밤에는 탁자 대신 자리 목록이 나오고 ↑↓로 대상을 고릅니다. 마피아끼리는 밤 채팅을 할 수 있습니다."
+        "desc": "밤에는 직업별 도트 장면과 대상 목록이 나오고 ↑↓로 고릅니다. 마피아는 접선한 배신자와 밤 채팅을 할 수 있습니다."
       },
       {
         "name": "밤 습격 연출",
@@ -1439,14 +1445,14 @@ const PROJECTS = [
         "desc": "밤이 끝날 때 서버가 판정한 결과(사망 / 경호원 막음 / 군인 버팀)에 맞춰 연출을 고릅니다."
       },
       {
-        "name": "탐정 조사 결과",
-        "media": "assets/server/mafia-job-snoop.png",
+        "name": "탐정 : 마피아 조사와 연행자 조사",
+        "media": "assets/server/mafia-night-snoop.png",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b6681a88534f5555f55699a",
-        "desc": "조사 결과는 탐정 본인에게만 전송되고, 의자 위에 표시됩니다."
+        "desc": "1일차 밤부터 밤마다 하나를 고릅니다. 산 사람이 마피아인지 조사하거나 연행자의 직업을 조사하고, 결과는 탐정 본인에게만 전송됩니다."
       },
       {
         "name": "배신자 접선",
-        "media": "assets/server/mafia-job-betrayer.png",
+        "media": "assets/server/mafia-night-betrayer.png",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b6681a88534f5555f55699a",
         "desc": "접선에 성공하면 마피아 자리를 알게 되고 밤 채팅에 합류합니다."
       },
@@ -1455,6 +1461,24 @@ const PROJECTS = [
         "media": "assets/server/mafia-pardon.gif",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b668120ab30ddd7c57a3032",
         "desc": "투표로 지목돼도 대통령은 연행되지 않고 연단 연출과 함께 방 전원에게 공개됩니다."
+      },
+      {
+        "name": "영매 : 사망자 직업 확인",
+        "media": "assets/server/mafia-night-medium.png",
+        "notion": "https://conscious-sun-4a1.notion.site/4092ae810b66810fb973e371c4d7ca7d",
+        "desc": "사망자만 고를 수 있고 연행자는 볼 수 없습니다. 결과는 영매 본인에게만 전송되고, 확인한 직업이 그 자리에 표시됩니다."
+      },
+      {
+        "name": "죽은 사람 채팅",
+        "media": "assets/server/mafia-dead-chat.png",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf",
+        "desc": "죽은 사람끼리 단계와 상관없이 채팅합니다. 서버가 죽은 사람에게만 보내므로 산 사람에게는 패킷 자체가 가지 않습니다."
+      },
+      {
+        "name": "결과 창",
+        "media": "assets/server/mafia-result.png",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf",
+        "desc": "게임이 끝나면 전원의 직업과 사망, 연행 여부를 공개합니다. 게임 중 누가 나가서 승패가 나면 승리 연출 없이 바로 이 화면으로 넘어갑니다."
       },
       {
         "name": "클라이언트 인트로",
@@ -1488,7 +1512,7 @@ const PROJECTS = [
       },
       {
         "name": "로비",
-        "desc": "내 번호와 방 목록(인원 · 상태), 접속 중인 사람과 상태(로비 / 방)를 표시하고 10초마다 자동으로 갱신합니다.",
+        "desc": "내 번호와 방 목록(인원, 상태), 접속 중인 사람과 상태(로비 / 방)를 표시하고 10초마다 자동으로 갱신합니다.",
         "media": "assets/server/mafia-lobby.png",
         "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf"
       },
@@ -1817,30 +1841,30 @@ function projectLine(p){
 const TOOL_DETAILS = {
   "게임 컨텐츠 제작 툴": {
     "youtube": "cp50DQF3Ngw",
-    "form": "맵·콘텐츠 제작 툴",
+    "form": "맵, 콘텐츠 제작 툴",
     "goal": [
       "단순히 오브젝트의 위치, 크기, 회전만 저장하는 맵 편집기가 아니라, 맵에 필요한 데이터와 기능을 함께 제작하고 클라이언트에서 동일하게 재현하기 위한 프레임워크입니다.",
-      "공통 DTO와 Description 구조를 기준으로 맵 오브젝트, 환경, 트리거, 이펙트, 조명, 시민, 시네마틱 데이터를 관리합니다. 툴에서 편집한 데이터는 문서·JSON으로 저장되고, Client의 Builder가 같은 데이터를 읽어 실제 게임 오브젝트와 환경 설정으로 재구성합니다."
+      "공통 DTO와 Description 구조를 기준으로 맵 오브젝트, 환경, 트리거, 이펙트, 조명, 시민, 시네마틱 데이터를 관리합니다. 툴에서 편집한 데이터는 문서, JSON으로 저장되고, Client의 Builder가 같은 데이터를 읽어 실제 게임 오브젝트와 환경 설정으로 재구성합니다."
     ],
     "framework": [
-      "Tool은 별도 데이터 형식을 새로 만들지 않고 공통 DTO와 DataDocument를 기준으로 데이터를 편집합니다. 편집한 결과는 카테고리별 문서·JSON으로 저장되고, Client의 Builder가 같은 문서를 읽어 게임 오브젝트와 환경 설정을 다시 구성합니다.",
+      "Tool은 별도 데이터 형식을 새로 만들지 않고 공통 DTO와 DataDocument를 기준으로 데이터를 편집합니다. 편집한 결과는 카테고리별 문서, JSON으로 저장되고, Client의 Builder가 같은 문서를 읽어 게임 오브젝트와 환경 설정을 다시 구성합니다.",
       "새 콘텐츠는 CMapObject의 ClientMakePath와 전용 Description, Builder의 생성 분기를 연결해 기존 흐름에 추가합니다."
     ],
     "frameworkMedia": "assets/tools/content-tool/framework-flow.svg",
     "features": [
       {
-        "name": "오브젝트 배치·선택·Transform 편집",
-        "desc": "Model을 고르면 Preview MapObject를 만들고 Ray Picking 위치에 배치합니다. Brush Mode에서는 간격, 그룹 개수, Normal 정렬, 회전·크기 랜덤 값을 함께 적용해 반복 오브젝트를 빠르게 배치합니다.",
+        "name": "오브젝트 배치, 선택, Transform 편집",
+        "desc": "Model을 고르면 Preview MapObject를 만들고 Ray Picking 위치에 배치합니다. Brush Mode에서는 간격, 그룹 개수, Normal 정렬, 회전, 크기 랜덤 값을 함께 적용해 반복 오브젝트를 빠르게 배치합니다.",
         "media": "assets/tools/content-tool/placement.mp4"
       },
       {
         "name": "Brush 배치",
-        "desc": "Brush Mode에서 간격, 그룹 개수, Normal 정렬, 회전·크기 랜덤 값을 함께 적용해 반복 오브젝트를 빠르게 배치합니다.",
+        "desc": "Brush Mode에서 간격, 그룹 개수, Normal 정렬, 회전, 크기 랜덤 값을 함께 적용해 반복 오브젝트를 빠르게 배치합니다.",
         "media": "assets/tools/content-tool/brush.mp4"
       },
       {
         "name": "Raw Data 불러오기",
-        "desc": "배치한 MapObject의 Model 정보, SRT 배열, Draw Type, Client Make Path와 기능별 Description을 Raw Data로 확인합니다. 일반 오브젝트와 식물·물·환경처럼 실행 방식이 달라도 공통 MapObject 데이터 안에서 함께 관리합니다.",
+        "desc": "배치한 MapObject의 Model 정보, SRT 배열, Draw Type, Client Make Path와 기능별 Description을 Raw Data로 확인합니다. 일반 오브젝트와 식물, 물, 환경처럼 실행 방식이 달라도 공통 MapObject 데이터 안에서 함께 관리합니다.",
         "media": "assets/tools/content-tool/raw-data.mp4"
       },
       {
@@ -1849,7 +1873,7 @@ const TOOL_DETAILS = {
         "media": "assets/tools/content-tool/parsing.mp4"
       },
       {
-        "name": "Environment · SkyBox · Wind",
+        "name": "Environment, SkyBox, Wind",
         "desc": "SkyBox와 Wind에 필요한 값을 한곳에서 구성하고, 저장한 환경 데이터는 Client에서 로드되어 맵의 환경 설정에 적용됩니다.",
         "media": "assets/tools/content-tool/environment.mp4"
       },
@@ -1865,7 +1889,7 @@ const TOOL_DETAILS = {
       },
       {
         "name": "Texture Splatting",
-        "desc": "Landscape에 쓸 Base·DH·NBR 텍스처와 RGBA Mask의 채널별 타일을 설정합니다. 설정은 이름으로 저장하고 다시 불러올 수 있어 맵마다 다른 지형 표현을 구성할 수 있습니다.",
+        "desc": "Landscape에 쓸 Base, DH, NBR 텍스처와 RGBA Mask의 채널별 타일을 설정합니다. 설정은 이름으로 저장하고 다시 불러올 수 있어 맵마다 다른 지형 표현을 구성할 수 있습니다.",
         "media": "assets/tools/content-tool/splatting.mp4"
       }
     ],
@@ -1889,7 +1913,7 @@ const TOOL_DETAILS = {
       },
       {
         "name": "전용 Description을 실제 객체 설정으로 변환",
-        "desc": "Water를 예로 들면 공통 Model·SRT 데이터를 CWater::WATER_DESC에 옮긴 뒤 물의 텍스처와 물결 값을 읽고, Water Prototype을 생성할 때 이 Description을 전달합니다. 다른 Path도 같은 방식으로 각 클래스의 전용 Description을 해석합니다."
+        "desc": "Water를 예로 들면 공통 Model, SRT 데이터를 CWater::WATER_DESC에 옮긴 뒤 물의 텍스처와 물결 값을 읽고, Water Prototype을 생성할 때 이 Description을 전달합니다. 다른 Path도 같은 방식으로 각 클래스의 전용 Description을 해석합니다."
       },
       {
         "name": "새 Client Make Path 추가 순서",
@@ -1900,7 +1924,7 @@ const TOOL_DETAILS = {
       {
         "title": "결과",
         "items": [
-          "MapObject와 DataDocument를 공통 기준으로 사용해 일반 배치와 환경, 시민, 시네마틱 데이터를 같은 저장·로드 흐름 안에서 관리했습니다.",
+          "MapObject와 DataDocument를 공통 기준으로 사용해 일반 배치와 환경, 시민, 시네마틱 데이터를 같은 저장, 로드 흐름 안에서 관리했습니다.",
           "Tool에서 편집하고 확인한 데이터를 JSON으로 저장하고, Client Builder가 같은 데이터로 게임 오브젝트와 환경을 재구성합니다.",
           "ClientMakePath와 전용 Description을 연결해 Water, Grass, TriggerBox처럼 생성 방식이 다른 콘텐츠를 같은 MapObject 구조 안에서 확장했습니다.",
           "새 콘텐츠는 Path와 Builder 생성 분기를 추가하는 방식으로 기존 맵 데이터 흐름을 유지하며 연결합니다."
@@ -1909,7 +1933,7 @@ const TOOL_DETAILS = {
       {
         "title": "구조적 개선 포인트",
         "items": [
-          "CMapObject가 CLIENT_MAKEPATH_DESC_BASE*를 직접 동적 할당하고 Path 변경·복사·해제를 클래스 내부에서 처리합니다. Description 생성, JSON 직렬화, Builder 분기가 여러 클래스에 나뉘어 있어 새 Path를 추가하거나 기존 데이터를 수정할 때 확인할 범위가 넓어졌고, Description의 메모리 소유권이 MapObject에 묶여 데이터 구조와 런타임 객체 생성 로직이 함께 엮였습니다.",
+          "CMapObject가 CLIENT_MAKEPATH_DESC_BASE*를 직접 동적 할당하고 Path 변경, 복사, 해제를 클래스 내부에서 처리합니다. Description 생성, JSON 직렬화, Builder 분기가 여러 클래스에 나뉘어 있어 새 Path를 추가하거나 기존 데이터를 수정할 때 확인할 범위가 넓어졌고, Description의 메모리 소유권이 MapObject에 묶여 데이터 구조와 런타임 객체 생성 로직이 함께 엮였습니다.",
           "MapObject에는 직렬화 가능한 값 데이터만 두고 전용 Description도 DataDocument나 별도 저장소에서 값 형태로 관리하는 데이터 중심 구조로 바꾸면, Client는 로드한 데이터로 GameObject를 만드는 역할만 맡게 되어 포인터 소유권 관리가 줄고 Path별 결합도와 수정 범위도 낮출 수 있습니다."
         ]
       }
@@ -1919,33 +1943,33 @@ const TOOL_DETAILS = {
     "youtube": "",
     "form": "레벨 제작 툴 (ImGui)",
     "goal": [
-      "자체 DirectX 9 엔진 위에서 구동되는 레벨 제작 도구입니다. 타일과 큐브로 공간을 구성하고, Sprite Atlas 기반의 오브젝트·이벤트·문을 배치한 뒤, 엔진과 Client가 함께 읽을 수 있는 JSON 맵 데이터로 저장합니다.",
+      "자체 DirectX 9 엔진 위에서 구동되는 레벨 제작 도구입니다. 타일과 큐브로 공간을 구성하고, Sprite Atlas 기반의 오브젝트, 이벤트, 문을 배치한 뒤, 엔진과 Client가 함께 읽을 수 있는 JSON 맵 데이터로 저장합니다.",
       "핵심은 UI만 만든 것이 아니라 엔진의 GameObject, Component, Manager, EventBus 구조를 제작 단계까지 확장해, 배치한 데이터가 실제 게임 규칙과 런타임 오브젝트로 이어지는 흐름을 만든 점입니다."
     ],
     "framework": [
-      "Create, Texture, Info 작업 모드와 Shape, Floor, 현재 UV 상태를 기준으로 편집 흐름을 관리합니다. ImGui UI에서 텍스처와 Inspector 데이터를 선택하면 Ray Picking이 Tile·Cube의 충돌 지점과 선택된 면을 판별하고, 해당 면에 텍스처를 적용합니다.",
-      "선택한 Sprite Atlas 메타데이터를 바탕으로 Decor, Event, Door 같은 MapObject를 배치합니다. 완성된 Tile·Cube·MapObject 데이터와 Cube 면별 UV·Flip 정보는 하나의 Map JSON으로 직렬화되고, Client는 이를 읽어 GameObject를 생성한 뒤 Collider·EventBus와 연결해 실제 게임 맵으로 재현합니다."
+      "Create, Texture, Info 작업 모드와 Shape, Floor, 현재 UV 상태를 기준으로 편집 흐름을 관리합니다. ImGui UI에서 텍스처와 Inspector 데이터를 선택하면 Ray Picking이 Tile, Cube의 충돌 지점과 선택된 면을 판별하고, 해당 면에 텍스처를 적용합니다.",
+      "선택한 Sprite Atlas 메타데이터를 바탕으로 Decor, Event, Door 같은 MapObject를 배치합니다. 완성된 Tile, Cube, MapObject 데이터와 Cube 면별 UV, Flip 정보는 하나의 Map JSON으로 직렬화되고, Client는 이를 읽어 GameObject를 생성한 뒤 Collider, EventBus와 연결해 실제 게임 맵으로 재현합니다."
     ],
     "frameworkMedia": "assets/tools/cube-maptool/framework.png",
     "features": [
       {
-        "name": "타일·큐브 배치",
+        "name": "타일, 큐브 배치",
         "desc": "Shape Type을 Tile이나 Cube로 정해 공간에 배치합니다.",
         "media": "assets/tools/cube-maptool/place.png"
       },
       {
-        "name": "타일·큐브 텍스처 입히기",
+        "name": "타일, 큐브 텍스처 입히기",
         "desc": "Texture 버튼으로 텍스처 목록을 열어 고르고, Texture 작업 모드에서 선택된 타입만 피킹해 텍스처를 입힙니다. 큐브는 바닥을 제외한 5면에 각각 다른 텍스처를 입힐 수 있습니다.",
         "media": "assets/tools/cube-maptool/texture.png"
       },
       {
-        "name": "타일·큐브 수정하기",
+        "name": "타일, 큐브 수정하기",
         "desc": "Info 모드에서 원하는 타일이나 큐브를 클릭하면 설정 창에서 정보를 수정할 수 있습니다.",
         "media": "assets/tools/cube-maptool/info.png"
       },
       {
         "name": "오브젝트 배치하기",
-        "desc": "Sprite Atlas의 오브젝트를 골라 배치된 타일·큐브 위에 놓습니다.",
+        "desc": "Sprite Atlas의 오브젝트를 골라 배치된 타일, 큐브 위에 놓습니다.",
         "media": "assets/tools/cube-maptool/object.png"
       }
     ],
@@ -1956,7 +1980,7 @@ const TOOL_DETAILS = {
         "desc": "Texture 모드에서 클릭 Raycast가 충돌 지점과 Cube의 AABB 범위를 비교해 +X, -X, +Z, -Z, +Y 중 선택된 면을 판별합니다. 고른 Atlas UV는 큐브 전체가 아니라 피킹된 면의 UV에만 적용되어, 면마다 다른 텍스처를 배치할 수 있습니다."
       },
       {
-        "name": "Atlas JSON 메타데이터로 오브젝트 분류·배치",
+        "name": "Atlas JSON 메타데이터로 오브젝트 분류, 배치",
         "desc": "Sprite Atlas의 frames로 ImGui에서 클릭 가능한 목록을 만들고, meta의 MAPOBJECT_CATEGORY와 MAPOBJECT_PLACEMENT가 리소스의 카테고리와 설치 위치를 결정합니다. JSON 메타데이터만 규약에 맞추면 코드 수정 없이 리소스를 기존 배치 UI와 저장 흐름에 연결할 수 있습니다."
       }
     ],
@@ -1965,8 +1989,8 @@ const TOOL_DETAILS = {
         "title": "아쉬운 부분",
         "items": [
           "로드 흐름의 미완성: 저장은 Tile, Cube, MapObject를 하나의 JSON으로 직렬화하지만 이를 대칭적으로 복원하는 Load_MapData()는 아직 완성되지 않았습니다. 파일 선택부터 카테고리별 로드, 오류 처리까지 하나의 진입점으로 묶을 필요가 있습니다.",
-          "이벤트 연결 검증 범위: Event Index 연결 상태 표시가 포털·이동 Event Cube 중심으로 동작합니다. Door, Switch, Event Object까지 같은 목록에서 검증하도록 확장하면 제작 단계에서 링크 누락을 더 빨리 찾을 수 있습니다.",
-          "리소스 규약 검증 부족: Atlas JSON의 meta, frames, 카테고리·배치 값이 빠졌을 때의 스키마 검증과 경고 UI가 없습니다. 로드 시 검증 단계를 추가하면 잘못된 Atlas 데이터로 인한 배치 오류를 줄일 수 있습니다.",
+          "이벤트 연결 검증 범위: Event Index 연결 상태 표시가 포털, 이동 Event Cube 중심으로 동작합니다. Door, Switch, Event Object까지 같은 목록에서 검증하도록 확장하면 제작 단계에서 링크 누락을 더 빨리 찾을 수 있습니다.",
+          "리소스 규약 검증 부족: Atlas JSON의 meta, frames, 카테고리, 배치 값이 빠졌을 때의 스키마 검증과 경고 UI가 없습니다. 로드 시 검증 단계를 추가하면 잘못된 Atlas 데이터로 인한 배치 오류를 줄일 수 있습니다.",
           "작업 모드 분기 집중: Create, Texture, Info 모드의 Raycast 분기와 충돌 처리가 여러 클래스에 나뉘어 있어 기능을 추가할 때 확인 범위가 넓습니다. 모드별 Command나 Handler 구조로 분리하면 유지보수와 확장이 더 쉬워집니다."
         ]
       }
@@ -2077,7 +2101,8 @@ function panelHTML(p, key){
       <div><dt>기간</dt><dd>${esc(p.period)}</dd></div>
       <div><dt>담당</dt><dd>${esc(p.role)}</dd></div>
     </dl>
-    <div class="prose">${(p.overview || []).map(t => `<p>${esc(t)}</p>`).join('')}</div>`;
+    <div class="prose">${(p.overview || []).map(t => `<p>${esc(t)}</p>`).join('')}</div>
+    ${p.extraVideo ? `<a class="item-link" href="${esc(p.extraVideo.url)}" target="_blank" rel="noopener">${esc(p.extraVideo.label)}</a>` : ''}`;
   if(key === 'video') return `<div class="yt" data-yt="${esc(p.youtube)}">${p.youtube ? '' : `<div class="ph"><strong>유튜브 영상 ID를 넣어주세요</strong><span>PROJECTS 데이터의 youtube 항목</span></div>`}</div>`;
   if(key === 'tech') return itemsHTML(p.tech);
   if(key === 'contents') return itemsHTML(p.contents);
@@ -2822,14 +2847,14 @@ const SKILLS = [
     "media": "assets/duet/instance-mesh.png"
   },
   {
-    "name": "UV 좌표 기반 타일·큐브 설계",
+    "name": "UV 좌표 기반 타일, 큐브 설계",
     "cat": "엔진 시스템",
     "project": "wizordum",
     "desc": "32×32 텍스처 아틀라스에서 고른 셀의 중심 UV로 타일과 큐브의 정점 UV를 계산하고, 큐브 면마다 다른 셀과 반전을 지정할 수 있게 했습니다.",
     "media": "assets/wizordum/uv-tile-cube.png"
   },
   {
-    "name": "선분·사각형 기반 지형 충돌 시스템",
+    "name": "선분, 사각형 기반 지형 충돌 시스템",
     "cat": "엔진 시스템",
     "project": "cuphead",
     "desc": "평지와 경사 발판은 선분 충돌로, 벽과 블록 형태의 지형은 사각형 충돌로 나눠 플레이어의 착지, 경사 이동, 벽 충돌을 처리하는 2D 지형 충돌 시스템입니다.",
@@ -2861,6 +2886,57 @@ const SKILLS = [
       "mutex로 보호한 ServerEventQueue 하나로 스레드 간 데이터 전달을 모음",
       "채팅방 데이터는 main 스레드에서만 수정해 별도 락이 필요 없음",
       "끊긴 수신 스레드는 자기 자신이 아니라 main 스레드에서 join"
+    ]
+  },
+  {
+    "name": "NetLib 분리와 패킷 송수신 구조",
+    "cat": "서버",
+    "project": "mafia",
+    "desc": "게임과 무관한 정적 라이브러리로 소켓, 접속자, 패킷 송수신, 스레드를 분리하고, 게임에는 이벤트 콜백으로 결과만 전달하는 구조입니다.",
+    "media": "assets/server/mafia-netlib-flow.png",
+    "notion": "https://conscious-sun-4a1.notion.site/4042ae810b6681f49a4fc85fe05f1d52",
+    "points": [
+      "수신 스레드는 이벤트 큐에 넣기만 하고, 접속자와 게임 상태는 로직 스레드 하나에서만 수정",
+      "받기는 Pre_Update, 보내기는 Late_Update에서 처리해 응답이 같은 프레임 안에 나감",
+      "패킷 앞에 타입과 길이를 담은 헤더를 두어 TCP의 메시지 경계를 구분",
+      "팩토리(Create)가 unique_ptr을 반환해 소켓 해제 경로를 소유자 하나로 고정"
+    ]
+  },
+  {
+    "name": "서버 권한 게임 로직",
+    "cat": "서버",
+    "project": "mafia",
+    "media": "assets/server/mafia-logic-flow.png"
+  },
+  {
+    "name": "직업별 능력 패킷",
+    "cat": "서버",
+    "project": "mafia",
+    "media": "assets/server/mafia-packet-flow.png"
+  },
+  {
+    "name": "서버 검증, 정보 은닉 (보안 테스트)",
+    "cat": "서버",
+    "project": "mafia",
+    "media": "assets/server/mafia-reject-log.png"
+  },
+  {
+    "name": "메모리 변조 탐지 Protected<T>",
+    "cat": "클라이언트 시스템",
+    "project": "mafia",
+    "media": "assets/server/mafia-protected-test.gif"
+  },
+  {
+    "name": "직업 7종 밤 능력과 결과 화면",
+    "cat": "클라이언트 콘텐츠",
+    "project": "mafia",
+    "desc": "7종 직업이 밤마다 능력을 쓰고, 서버가 판정한 결과를 패킷으로 받아 직업별 도트 장면과 대상 목록으로 보여 주는 콘텐츠입니다. 클라이언트는 누구에게 능력을 쓸지만 보내고 판정은 하지 않습니다.",
+    "media": "assets/server/mafia-night-mafia.png",
+    "notion": "https://conscious-sun-4a1.notion.site/4092ae810b66810fb973e371c4d7ca7d",
+    "points": [
+      "탐정, 영매, 배신자처럼 바로 결과가 나는 능력은 쓴 사람에게만 전송",
+      "마피아, 경호원, 군인 결과는 밤이 끝날 때 방 전원에게 전송",
+      "Tab으로 능력 화면과 원탁, 채팅 화면을 전환"
     ]
   },
   {
@@ -3006,50 +3082,50 @@ Object.assign(SKILLS.find(s => s.name === '자체엔진 모바일 연동') || {}
 
 /* ===== 이력: 용사가 걸어온 길 =====
    오래된 것부터 순서대로. 칸마다 몬스터(mob: 사냥 게임의 ART 키) 한 마리, boss:true면 대형 몬스터.
-   project 항목은 PROJECTS의 제목·설명·썸네일을 그대로 가져옴 */
+   project 항목은 PROJECTS의 제목, 설명, 썸네일을 그대로 가져옴 */
 /* ===== 보유 기술 (프로필 탭) =====
    이력서의 '보유 기술' 분류 그대로. 태그를 누르면 d(활용 경험)가 팝업으로 보임 */
 const STACK = [
   {name:'언어', items:[
-    {n:'C++', d:['Win API, DirectX 9 / 11을 이용한 개인·팀 프로젝트의 자체 엔진 구조 개발 및 콘텐츠 개발', '자료구조 및 알고리즘 구현 (선형, 재귀, 정렬)']},
+    {n:'C++', d:['Win API, DirectX 9 / 11을 이용한 개인, 팀 프로젝트의 자체 엔진 구조 개발 및 콘텐츠 개발', '자료구조 및 알고리즘 구현 (선형, 재귀, 정렬)']},
     {n:'C', d:['간단한 과제 및 자판기 콘솔 프로그램']},
     {n:'C#', d:['Unity를 이용한 간단한 2D 액션 RPG 게임 개발']},
     {n:'Python', d:['매크로 프로그램, 크롬 크롤링 프로그램, 알고리즘 탐색 구현']},
     {n:'Java', d:['정렬 종류별 구현 및 비교 콘솔 프로그램 제작']},
-    {n:'HTML · CSS · JS', d:['간단한 자기소개 사이트 제작']},
+    {n:'HTML, CSS, JS', d:['간단한 자기소개 사이트 제작']},
     {n:'mLua', d:['MSW(메이플 월드)를 이용한 프로젝트에서 활용']}]},
   {name:'Shader', items:[
     {n:'Vertex Shader', d:['World / View / Projection 변환, Skeletal Animation Bone Matrix 연산 등 정점 데이터 처리', '바람 데이터와 플레이어 위치를 받아 잔디가 흔들리고 부딪히면 휘는 효과를 정점 변형으로 구현', 'Sky Box 렌더링을 위한 정점 변환']},
     {n:'Geometry Shader', d:['UI 렌더링과 Particle Effect의 빌보드 처리, 간단한 정점 처리']},
-    {n:'Pixel Shader', d:['3D Model 렌더링, Cube 6면에 스프라이트 UV로 텍스처 입히기', 'Texture 2D Array 인덱스 접근으로 Texture Splatting 다중 텍스처 블렌딩', 'Water Shader: UV Scroll로 물결·윤슬, 플레이어가 지나간 자리에 파동 효과', 'UI Fade In / Out, 로딩 진행도 기반 흑백 → 컬러 전환, 각종 Effect', 'Channel Packing된 Sky Texture와 구면 UV 매핑으로 Sky Box 구현']},
+    {n:'Pixel Shader', d:['3D Model 렌더링, Cube 6면에 스프라이트 UV로 텍스처 입히기', 'Texture 2D Array 인덱스 접근으로 Texture Splatting 다중 텍스처 블렌딩', 'Water Shader: UV Scroll로 물결, 윤슬, 플레이어가 지나간 자리에 파동 효과', 'UI Fade In / Out, 로딩 진행도 기반 흑백 → 컬러 전환, 각종 Effect', 'Channel Packing된 Sky Texture와 구면 UV 매핑으로 Sky Box 구현']},
     {n:'Constant Buffer', d:['카메라, 조명, Material 등 렌더링 데이터를 구조체 단위로 GPU에 전달하고 관리']},
     {n:'Deferred Shader', d:['G-Buffer 기반 Deferred Rendering 구현', '다수 광원 처리 시 연산 비용을 줄이는 Deferred Lighting 구조 적용']}]},
-  {name:'그래픽스·엔진', items:[
-    {n:'DirectX 11', d:['Vertex / Pixel Shader, Constant Buffer를 활용한 Shader 기반 렌더링 파이프라인 학습', 'FBX 모델 파싱과 Bone 계층 구조로 3D Model 및 Animation Rendering 시스템 구현', '개인 프로젝트: Viewport 기반 멀티 카메라 렌더링으로 분할 화면 구현', '팀 프로젝트: 자체 엔진 기반 맵 툴·클라이언트 콘텐츠, Texture Splatting 지형 렌더링']},
+  {name:'그래픽스, 엔진', items:[
+    {n:'DirectX 11', d:['Vertex / Pixel Shader, Constant Buffer를 활용한 Shader 기반 렌더링 파이프라인 학습', 'FBX 모델 파싱과 Bone 계층 구조로 3D Model 및 Animation Rendering 시스템 구현', '개인 프로젝트: Viewport 기반 멀티 카메라 렌더링으로 분할 화면 구현', '팀 프로젝트: 자체 엔진 기반 맵 툴, 클라이언트 콘텐츠, Texture Splatting 지형 렌더링']},
     {n:'DirectX 9', d:['고정 렌더링 파이프라인과 Local → World → View → Projection → Viewport → Screen 변환 과정 이해', '팀 프로젝트에서 Tile / Cube Mesh 구현, 스프라이트 시트 UV로 Texture Mapping']},
     {n:'Win API', d:['GDI+ 2D 디펜스 게임(개인 학습), GDI 컵헤드 모작', 'GDI 2D 스프라이트 렌더링과 Double Buffering으로 CPU 렌더링 원리 학습']},
     {n:'Unity', d:['2D 탑다운 액션 RPG: 이동, 몬스터 전투, 퀘스트, 던전, 보스 콘텐츠 구현', 'Scene, Prefab, Rigid Body, UI Canvas 활용과 C# 코드 작성']},
     {n:'MSW (메이플 월드)', d:['맞짱: 미니게임 배틀 진행 중 — 유저 매칭, 대기 룸, 미니게임 인트로 제작']},
     {n:'MSW 서버', d:['Client, Client Only, Server, Server Only 등 MSW 엔진 내부 서버 구조를 이해하고 매칭 로직과 미니게임 시작 대기방 제작에 활용']}]},
   {name:'게임 시스템', items:[
-    {n:'Multi Camera', d:['한 화면에서 여러 카메라를 동시에 렌더링하는 멀티 카메라 시스템', 'Viewport로 카메라별 영역을 나눠 분할 화면 2인 플레이, 카메라별 독립 렌더링·Lighting Pass·UI 출력']},
-    {n:'Cinematic Camera', d:['맵 툴에서 Camera Waypoint와 Waypoint별 이벤트 배치', '저장된 데이터를 Client에서 파싱해 카메라 이동·시점 전환·이벤트 실행을 데이터로 제어']},
-    {n:'Citizen', d:['마을이 비어 보이지 않도록 이동·대화하는 생활형 NPC 시스템', '툴에서 Waypoint 설정, Preset NPC를 랜덤 생성해 경로 이동과 랜덤 대사', '외형·대사 데이터를 편집해 Preset으로 저장']},
+    {n:'Multi Camera', d:['한 화면에서 여러 카메라를 동시에 렌더링하는 멀티 카메라 시스템', 'Viewport로 카메라별 영역을 나눠 분할 화면 2인 플레이, 카메라별 독립 렌더링, Lighting Pass, UI 출력']},
+    {n:'Cinematic Camera', d:['맵 툴에서 Camera Waypoint와 Waypoint별 이벤트 배치', '저장된 데이터를 Client에서 파싱해 카메라 이동, 시점 전환, 이벤트 실행을 데이터로 제어']},
+    {n:'Citizen', d:['마을이 비어 보이지 않도록 이동, 대화하는 생활형 NPC 시스템', '툴에서 Waypoint 설정, Preset NPC를 랜덤 생성해 경로 이동과 랜덤 대사', '외형, 대사 데이터를 편집해 Preset으로 저장']},
     {n:'Interactive Object', d:['Event Bus와 충돌 처리로 플레이어–오브젝트 상호작용 구현', '파괴되는 상자, 발판으로 켜지는 스위치, 클릭하면 움직이는 큐브 등', '툴에서 이벤트 ID를 연결해 서로 연동되는 오브젝트 구성']},
     {n:'Trigger', d:['Trigger Box로 Monster Spawn, Monster Wave, Camera / NPC / Cinematic Event 실행']},
     {n:'Collision', d:['Scene마다 타입별 Collision Table을 등록해 필요한 그룹끼리만 매 프레임 검사', '충돌을 Enter / On / Out으로 나누고 객체별 함수를 오버로딩해 처리']},
-    {n:'UI', d:['분할 화면에서 UI가 각 카메라 영역에 맞게 출력되도록 Viewport 기준으로 위치·크기 계산', 'Fade In / Out, Blink, Loading Progress 등 UI 연출']}]},
+    {n:'UI', d:['분할 화면에서 UI가 각 카메라 영역에 맞게 출력되도록 Viewport 기준으로 위치, 크기 계산', 'Fade In / Out, Blink, Loading Progress 등 UI 연출']}]},
   {name:'최적화', items:[
     {n:'프레임 분할 생성', d:['Monster Wave, Spawn Effect / Item 등을 한 프레임에 만들 때 생기는 병목을 발견', '생성 함수를 List에 저장하고 선입선출로 1프레임에 하나씩 생성해 해결']},
-    {n:'Binary 리소스 변환', d:['Assimp를 Client에서 직접 쓰면 메모리와 로딩 시간이 늘어나는 문제', 'Converter 프로젝트로 분리해 Vertex, Index, Bone, Animation을 Bin 파일로 저장·파싱하도록 개선']},
+    {n:'Binary 리소스 변환', d:['Assimp를 Client에서 직접 쓰면 메모리와 로딩 시간이 늘어나는 문제', 'Converter 프로젝트로 분리해 Vertex, Index, Bone, Animation을 Bin 파일로 저장, 파싱하도록 개선']},
     {n:'Texture Splatting', d:['여러 Texture를 Texture 2D Array로 관리하고 RGBA Weight Map으로 필요한 것만 블렌딩', '다양한 지형을 표현하면서 Texture 관리와 Shader 구조를 단순화']},
     {n:'Collision', d:['Ray Picking 시 모든 정점 순회로 생기는 프레임 저하를 AABB / Sphere 1차 판정 후 후보만 정점 검사하도록 개선', '타입별 Collision Group으로 나눠 필요한 그룹끼리만 검사']},
     {n:'Deferred Rendering', d:['Render Target에 Diffuse, Normal, Depth를 저장한 뒤 Lighting Pass에서 조명 계산', '멀티 카메라에서 카메라 수만큼 늘어나던 Light Pass를 Scissor Rect로 각 Viewport 영역에만 수행']},
     {n:'Camera Area Culling', d:['카메라마다 Area를 두고 범위 밖 오브젝트를 렌더링에서 제외해 카메라 수 증가에 따른 비용 감소']},
     {n:'Resource', d:['Resource Manager로 Texture, Shader, Model을 재사용해 중복 로딩 방지, 메모리 사용량과 로딩 시간 개선']},
-    {n:'Mesh Instance', d:['같은 모델·Material 객체를 묶어 Instance Draw로 Draw Call 최소화', '툴 단계에서 Instance 데이터를 미리 묶어 저장해 런타임 탐색 비용 감소']}]},
+    {n:'Mesh Instance', d:['같은 모델, Material 객체를 묶어 Instance Draw로 Draw Call 최소화', '툴 단계에서 Instance 데이터를 미리 묶어 저장해 런타임 탐색 비용 감소']}]},
   {name:'디자인 패턴', items:[
-    {n:'Singleton', d:['최상위 시스템의 중복 생성을 막고 생성·해제 시점을 한 곳에서 통제', '싱글톤은 GameManager 하나로 한정하고 각 Manager는 GameManager가 소유·생성·해제']},
+    {n:'Singleton', d:['최상위 시스템의 중복 생성을 막고 생성, 해제 시점을 한 곳에서 통제', '싱글톤은 GameManager 하나로 한정하고 각 Manager는 GameManager가 소유, 생성, 해제']},
     {n:'Component', d:['공통 기능을 Component로 분리해 재사용과 확장성 확보', 'GameObject는 Transform, Collider, Navigation, UI Object는 UI Animation, UIImage 등으로 관리']},
     {n:'Prototype', d:['로딩 시점에 원본 객체를 등록하고 인게임에서는 Clone으로 생성해 생성 비용 절감']},
     {n:'Factory', d:['Engine이 Client의 Scene 클래스를 몰라도 Scene ID로 등록된 Factory를 찾아 일관되게 Scene 전환']},
@@ -3057,39 +3133,39 @@ const STACK = [
     {n:'State', d:['상태별 로직을 개별 State 클래스로 분리해 조건문 증가와 가독성 문제 해결', 'Player / Monster는 Idle, Move, Attack, Damage, Camera는 Fade, Target Change 등으로 관리']},
     {n:'Facade', d:['GameManager에 서브시스템 래퍼 함수 약 110개를 두어 Client는 단일 창구로만 엔진과 상호작용']},
     {n:'Template Method', d:['Pre_Update → Update → Late_Update → Render 흐름은 부모가 강제하고 파생 클래스는 필요한 단계만 오버라이드']}]},
-  {name:'STL·자료구조', items:[
+  {name:'STL, 자료구조', items:[
     {n:'Stack', d:['LIFO 구조를 이해하기 위해 직접 구현']},
     {n:'Queue', d:['FIFO 구조 직접 구현', 'Scene 변경 요청, 이벤트 처리 등 요청을 순서대로 처리하는 데 활용']},
-    {n:'Deque', d:['Vector와 List를 보완하는 양방향 삽입·삭제 구조를 이해하기 위해 직접 구현']},
-    {n:'Vector', d:['동적 배열 원리와 삽입·삭제 시 데이터 이동 비용을 이해하기 위해 직접 구현', 'Navigation Cell, Render Group, Game Object 관리, LIFO Scene Stack 직접 구현']},
-    {n:'List', d:['노드 연결 구조, 중간 삽입·삭제의 장점과 순차 접근 한계를 이해하기 위해 직접 구현', '삭제 예정·지연 삭제 대상 관리']},
+    {n:'Deque', d:['Vector와 List를 보완하는 양방향 삽입, 삭제 구조를 이해하기 위해 직접 구현']},
+    {n:'Vector', d:['동적 배열 원리와 삽입, 삭제 시 데이터 이동 비용을 이해하기 위해 직접 구현', 'Navigation Cell, Render Group, Game Object 관리, LIFO Scene Stack 직접 구현']},
+    {n:'List', d:['노드 연결 구조, 중간 삽입, 삭제의 장점과 순차 접근 한계를 이해하기 위해 직접 구현', '삭제 예정, 지연 삭제 대상 관리']},
     {n:'Array', d:['Enum 기반 타입별 데이터, 슬롯 정보 등 크기가 고정된 데이터 관리']},
     {n:'String', d:['문자열 클래스의 동작과 메모리 관리를 이해하기 위해 직접 구현', '리소스 경로, Key 값 관리']},
     {n:'Map', d:['Key 자동 정렬을 활용해 순서가 보장되어야 하는 UI Object 등 관리']},
     {n:'Unordered Map', d:['해시 기반 빠른 검색으로 Scene Factory, 리소스 관리 등 잦은 조회 데이터 관리']},
     {n:'Set', d:['중복을 허용하지 않는 특성으로 Bone ID 중복 제거, 고유 데이터 관리']},
     {n:'Pair', d:['충돌 테이블의 대상 조합, 충돌 객체 쌍과 상태처럼 두 데이터를 한 단위로 관리']},
-    {n:'function', d:['Scene Factory, 이벤트·요청 처리 등 함수 객체 기반 로직 관리']},
+    {n:'function', d:['Scene Factory, 이벤트, 요청 처리 등 함수 객체 기반 로직 관리']},
     {n:'Sort', d:['알파 블렌딩 오브젝트를 카메라 거리 기준으로 렌더링 순서 정렬']}]},
   {name:'수학', items:[
     {n:'Vector', d:['플레이어 이동, 몬스터 추적, NPC 이동의 방향 계산', '정규화와 내적으로 시야 판정 및 방향 계산']},
     {n:'Matrix', d:['World, View, Projection으로 3D 객체 렌더링', 'Bone Matrix로 Skeletal Animation, 카메라별 View Matrix로 멀티 카메라 렌더링']},
-    {n:'Sphere · AABB · OBB', d:['충돌 판정을 구현해 Collision System과 Ray Picking에 활용', 'Bounding Volume으로 후보를 고른 뒤 세부 검사']},
+    {n:'Sphere, AABB, OBB', d:['충돌 판정을 구현해 Collision System과 Ray Picking에 활용', 'Bounding Volume으로 후보를 고른 뒤 세부 검사']},
     {n:'Lerp', d:['시네마틱 카메라와 Citizen Waypoint 이동을 선형 보간으로 자연스럽게 연출']},
-    {n:'Sin · Cos', d:['Water Shader의 물결·윤슬을 시간에 따른 UV 변화로 연출', 'Grass Shader에서 바람 데이터로 정점을 흔들어 잔디 표현']}]},
-  {name:'라이브러리·GUI', items:[
+    {n:'Sin, Cos', d:['Water Shader의 물결, 윤슬을 시간에 따른 UV 변화로 연출', 'Grass Shader에서 바람 데이터로 정점을 흔들어 잔디 표현']}]},
+  {name:'라이브러리, GUI', items:[
     {n:'Assimp', d:['FBX 리소스에서 Mesh, Bone, Animation을 추출하고 Converter로 Binary 데이터로 변환']},
     {n:'FMOD', d:['BGM, Effect, UI Sound를 Sound Manager와 연동해 사운드 시스템 구현']},
-    {n:'DirectX Tex', d:['DDS, TGA 등 Texture 리소스 로드와 생성·변환']},
-    {n:'JSON', d:['툴 데이터 저장·로딩, 설정 데이터 관리, 파싱한 데이터로 객체 생성']},
-    {n:'ImGui', d:['맵 툴, 이펙트 툴 등 Editor UI를 빠르게 구성해 Object 생성·수정·삭제와 툴 기능 제어']}]},
+    {n:'DirectX Tex', d:['DDS, TGA 등 Texture 리소스 로드와 생성, 변환']},
+    {n:'JSON', d:['툴 데이터 저장, 로딩, 설정 데이터 관리, 파싱한 데이터로 객체 생성']},
+    {n:'ImGui', d:['맵 툴, 이펙트 툴 등 Editor UI를 빠르게 구성해 Object 생성, 수정, 삭제와 툴 기능 제어']}]},
   {name:'네트워크', items:[
-    {n:'Winsock (TCP)', d:['Winsock TCP 기반 1:N 콘솔 채팅 서버 / 클라이언트 제작, 외부 PC 접속 테스트', '마피아 게임 서버에서 소켓·주소를 클래스로 감싼 정적 라이브러리(NetLib) 제작', '헤더(타입+길이)를 먼저 받고 길이만큼 본문을 받아 TCP 메시지 경계 처리', '마피아 서버에서 모든 요청을 서버가 다시 판정하고, 조작 패킷 14종 · 메모리 검색으로 직접 공격해 검증']},
+    {n:'Winsock (TCP)', d:['Winsock TCP 기반 1:N 콘솔 채팅 서버 / 클라이언트 제작, 외부 PC 접속 테스트', '마피아 게임 서버에서 소켓, 주소를 클래스로 감싼 정적 라이브러리(NetLib) 제작', '헤더(타입+길이)를 먼저 받고 길이만큼 본문을 받아 TCP 메시지 경계 처리', '마피아 서버에서 모든 요청을 서버가 다시 판정하고, 조작 패킷 14종, 메모리 검색으로 직접 공격해 검증']},
     {n:'Multi Thread', d:['Accept 스레드와 클라이언트별 수신 스레드를 두고, 받은 내용은 이벤트 큐로 main 스레드에 전달', 'mutex로 보호하는 지점을 이벤트 큐 하나로 제한하고 공유 데이터는 main 스레드에서만 수정', '연결이 끊긴 수신 스레드는 main 스레드에서 join']},
-    {n:'Smart Pointer', d:['소켓·클라이언트 객체를 unique_ptr로 관리하고 소유권 이동은 std::move로 명시', '팩토리가 unique_ptr을 반환해 해제 경로를 소유자 하나로 고정']}]},
-  {name:'협업·AI', items:[
+    {n:'Smart Pointer', d:['소켓, 클라이언트 객체를 unique_ptr로 관리하고 소유권 이동은 std::move로 명시', '팩토리가 unique_ptr을 반환해 해제 경로를 소유자 하나로 고정']}]},
+  {name:'협업, AI', items:[
     {n:'GitHub', d:['DirectX 9 팀 프로젝트, DirectX 11 개인 / 팀 프로젝트에서 버전 관리, 코드 공유, 테스트']},
-    {n:'Notion', d:['팀 프로젝트 전체 계획·출퇴근 관리, 프로젝트 정리 문서화']},
+    {n:'Notion', d:['팀 프로젝트 전체 계획, 출퇴근 관리, 프로젝트 정리 문서화']},
     {n:'Slack', d:['팀 프로젝트 To-do List, 버그, 개선 사항 공유']},
     {n:'Jira', d:['팀 프로젝트 일정 관리, 이슈 추적']},
     {n:'Figma', d:['Notion에서 정리한 문서 시각화']},
@@ -3141,8 +3217,8 @@ const ROAD_KINDS = {school:['학교','#2B50D9'], army:['군 복무','#3E8E5E'], 
 const ROAD = [
   {date:'2019.03', kind:'school', mob:'slime', title:'나사렛대학교 입학', gain:['C', 'Java'], desc:'IT융합학부 컴퓨터소프트웨어학과'},
   {date:'2022.02', kind:'army', mob:'golem', boss:true, title:'육군 병장 만기 전역', up:['끈기', '책임감'], meta:'2020.08 – 2022.02', desc:'예비군 조교로 복무'},
-  {date:'2024 2학기', kind:'school', mob:'mush', title:'졸업 작품 · Unity 던전 RPG', gain:['Unity', 'C#'], desc:'Unity 기반 던전 RPG를 3인 팀의 팀장으로 제작'},
-  {date:'2025.02', kind:'school', mob:'beholder', boss:true, title:'나사렛대학교 졸업', gain:['Python', 'HTML · CSS · JS'], desc:'IT융합학부 컴퓨터소프트웨어학과 졸업 · 성적 장학금 3회 (2019-2, 2023-2, 2024-1)'},
+  {date:'2024 2학기', kind:'school', mob:'mush', title:'졸업 작품, Unity 던전 RPG', gain:['Unity', 'C#'], desc:'Unity 기반 던전 RPG를 3인 팀의 팀장으로 제작'},
+  {date:'2025.02', kind:'school', mob:'beholder', boss:true, title:'나사렛대학교 졸업', gain:['Python', 'HTML, CSS, JS'], desc:'IT융합학부 컴퓨터소프트웨어학과 졸업, 성적 장학금 3회 (2019-2, 2023-2, 2024-1)'},
   {date:'2025.03', kind:'edu', mob:'bat', title:'쥬신 게임 아카데미 시작', gain:['C++', 'STL'], desc:'WinAPI, DirectX 9/11, C++ 게임 콘텐츠 제작 과정 (현재 취업 과정 수강 중)'},
   {date:'2025.07', kind:'project', project:'cuphead', mob:'frog', title:'컵헤드 모작 완성', gain:['Win API (GDI)'], meta:'2025.06.19 – 2025.07.01'},
   {date:'2025.09', kind:'project', project:'wizordum', mob:'skeleton', title:'위조덤 모작 완성', gain:['DirectX 9', 'ImGui', 'JSON', 'Git'], meta:'2025.08 – 2025.09'},
@@ -3151,10 +3227,10 @@ const ROAD = [
   {date:'2026.07', kind:'edu', mob:'ghost', title:'메이플 월드 크리에이터 부트캠프 3기 수료', gain:['MSW', 'mLua'], desc:'MSW(메이플스토리 월드) 온라인 부트캠프'},
   {date:'2026.09', kind:'project', project:'msw', mob:'mimic', title:'맞짱 : 미니게임 배틀 개발 시작', gain:['Claude', 'Codex'], up:['mLua'], meta:'2026.09 – 개발 중'},
   {date:'2026.09', kind:'cert', mob:'wolf', title:'2026년 정기 기사 3회 필기', up:['CS 기초'], desc:'한국산업인력공단'},
-  {date:'2026.10', kind:'project', mob:'slime', title:'콘솔 채팅 서버 완성', gain:['Winsock', 'TCP/IP', 'Multi Thread'], desc:'Winsock TCP 기반 1:N 채팅 서버 · Accept / 수신 스레드와 이벤트 큐로 네트워크와 로직 처리를 분리'},
+  {date:'2026.10', kind:'project', mob:'slime', title:'콘솔 채팅 서버 완성', gain:['Winsock', 'TCP/IP', 'Multi Thread'], desc:'Winsock TCP 기반 1:N 채팅 서버, Accept / 수신 스레드와 이벤트 큐로 네트워크와 로직 처리를 분리'},
   {date:'2026.10', kind:'project', project:'mafia', mob:'bat', title:'CMD 마피아 게임 서버', gain:['Smart Pointer'], up:['Winsock', 'Multi Thread'], meta:'2026.10 – 2026.11'}
 ];
-// 이력 길 전용 도트(몬스터·용사·풍경). 한 글자 = 한 칸, pal 색으로 칠함
+// 이력 길 전용 도트(몬스터, 용사, 풍경). 한 글자 = 한 칸, pal 색으로 칠함
 const ROAD_ART = {"pal":{"K":"#18202E","k":"#3A4A63","W":"#FFFFFF","G":"#3CC47C","g":"#23915A","h":"#9BE8B4","B":"#2B50D9","b":"#1B338F","l":"#9BB3FF","R":"#F0483E","r":"#A82A22","p":"#FFB0A3","Y":"#FFD23F","y":"#D99A0B","O":"#FF8A2B","P":"#8B5CF6","q":"#5634B0","v":"#C9B6FF","S":"#D4DBE6","s":"#98A3B6","M":"#5F6B7E","N":"#8B5A2B","n":"#5A3714","T":"#D9A86C","E":"#EFE6CF","F":"#F6C9A0","C":"#6FC6E8","c":"#3C8FB8"},"mobs":{"slime":{"name":"초록 슬라임","map":["................","......KKKK......","....KKhhhGKK....","...KhhGGGGGGK...","..KhGGGGGGGGGK..","..KGGGGGGGGGGK..",".KGGGWKGGGWKGGK.",".KGGGKKGGGKKGGK.",".KGGGGGGGGGGGGK.",".KGGGGGKKGGGGgK.",".KgGGGGGGGGGGgK.","..KggggggggggK..","...KKKKKKKKKK..."]},"mush":{"name":"독버섯","map":[".....KKKKKK.....","...KKRRRRRRKK...","..KRRWWRRRRRRK..",".KRRWWWRRRWWRRK.",".KRRRWRRRRWWRRK.","KRRRRRRRWRRRRRRK","KrrRRRRRRRRRRrrK",".KKrrrrrrrrrrKK.","...KTTTTTTTTK...","...KTKKTTKKTK...","...KTKWTTKWTK...","...KTTTTTTTTK...","...KTTKKKKTTK...","....KTTTTTTK....","...KnnK..KnnK...","...KKKK..KKKK..."]},"bat":{"name":"동굴 박쥐","map":["K..............K","KK....K..K....KK","KqK...KKKK...KqK","KqqK.KPPPPK.KqqK","KqPqKPPPPPPKqPqK","KqPPqPWKPWKPqPPK",".KqPPPPPPPPPPPK.","..KqPPPWPWPPqK..","...KqqPPPPqqK...","....KK.KK.KK...."]},"frog":{"name":"식인 꽃","map":["....KKK..KKK....","...KRRRKKRRRK...","..KRRpRRRRpRRK..","..KRpKKKKKKpRK..",".KRRKYYYYYYKRRK.",".KRRKYKYYKYKRRK.",".KRRKYYYYYYKRRK.","..KRKYWKKWYKRK..","..KRRKYYYYKRRK..","...KRRKKKKRRK...","....KKKggKKK....",".KK....Kg......K","KGGK...Kg...KKGK",".KGGK..KgK.KGGK.","..KGGKKKgKKGGK..","...KKKKKKKKKK..."]},"skeleton":{"name":"해골 전사","map":[".....KKKKK......","....KEEEEEK.....","...KEEEEEEEK....","...KEKKEKKEK....","...KEKKEKKEK....","...KEEEKEEEK..K.","....KEKEKEK..KsK",".....KKKKK..KsK.","...KKEKEKEKKsK..","..KEKEEEEEKEK...","..KEKKEEEKKyK...","...K.KEEEK.KK...",".....KEKEK......","....KEK.KEK.....","....KEK.KEK.....","...KKK...KKK...."]},"ghost":{"name":"떠도는 유령","map":[".....KKKKKK.....","...KKvvvvvvKK...","..KvvWWvvvvvvK..",".KvvWWvvvvvvvvK.",".KvvvvvvvvvvvvK.","KvvvKKvvvvKKvvvK","KvvvKKvvvvKKvvvK","KvvvvvvvvvvvvvvK","KvvvvvvKKvvvvvvK","KvvvvvKPPKvvvvvK","KvvvvvvKKvvvvvvK","KvvvvvvvvvvvvvvK","KvvKvvvKKvvvKvvK","KvK.KvK..KvK.KvK",".K...K....K...K."]},"mimic":{"name":"미믹 상자","map":["..KKKKKKKKKKKK..",".KNNNNNNNNNNNNK.","KNTTNNNNNNNNTTNK","KNNNNNYYYYNNNNNK","KKKKKKYKKYKKKKKK","KWKWKWKWKWKWKWKK","KRRRRRRRRRRRRRRK","KRRRRpRRRRRRRRRK","KWKWKWKWKWKWKWKK","KKKKKKKKKKKKKKKK","KNNNNNNYYNNNNNNK","KNTTNNNYYNNNTTNK","KNNNNNNNNNNNNNNK",".KKKKKKKKKKKKKK."]},"wolf":{"name":"잿빛 늑대","map":["..K.K...........",".KsKsK..........",".KssssK.........","KsWKsssK........","KssssssKKKKKKK..","KKKsssssssssssKK","..KsssssssssMssK","..KsSSsssssssMsK","..KsSSssssssssK.","...KsssKKKKsssK.","...KsK.K..KsKsK.","...KsK....KsK.K.","..KKKK...KKKK..."]},"golem":{"name":"바위 골렘","map":[".......KKKKKK.......",".....KKssssssKK.....","....KssSSsssssMK....","....KsSKYssKYssK....","....KsssssssssMK....","..KKKKsMMssMMsKKKK..",".KssSsKKKKKKKKsSssK.","KsSSsssssGsssssSSssK","KsSsssssGGsssssssMsK","KssssKsssssssKssssMK","KsssK.KsssssK.KsssMK",".KssK.KsSsssK.KssMK.",".KMMK.KssssMK.KMMK..","..KK.KsssKsssK.KK...",".....KssK.KssK......","....KsSsK.KsSsK.....","....KMMMK.KMMMK.....","....KKKKK.KKKKK....."]},"beholder":{"name":"거대 눈알","map":["..K....K...K....K...",".KqK..KqK.KqK..KqK..","..Kq..Kq...qK..qK...","...KqqKKKKKKKqqK....","....KPPPPPPPPPK.....","...KPPvvPPPPPPPK....","..KPPvWWWWWWWPPPK...","..KPvWWWWWWWWWPPK...",".KPPWWWBBBBWWWWPPK..",".KPPWWBBKKBBWWWPPK..",".KPPWWBKKKKBWWWPPK..",".KPPWWBBKKBBWWWPPK..",".KPPWWWBBBBWWWWPPK..","..KPPWWWWWWWWWPPK...","..KPPPWWWWWWWPPPK...","...KqPPPPPPPPPqK....","....KqKWKWKWKqK.....",".....KKKKKKKKK......"]},"octo":{"name":"바다 문어","map":["......KKKKKKK.......","....KKRRRRRRRKK.....","...KRRpRRRRRRRRK....","..KRRppRRRRRRRRRK...","..KRRRRRRRRRRRRRK...",".KRRRWWKRRRWWKRRRK..",".KRRRWKKRRRWKKRRRK..",".KRRRRRRRRRRRRRRRK..",".KRRRRRRKKKRRRRRRK..","..KRRRRKrrrKRRRRK...","..KrRRRRKKKRRRRrK...",".KrKRrRRRRRRRrRKrK..","KrK.KrKrRRRrKrK.KrK.","KrK.KrKKrRrKKrK.KrK.",".KrKKrK.KrK.KrKKrK..","..KK.KK..K..KK.KK...","....................","...................."]},"dragon":{"name":"붉은 드래곤","map":["..........................K.....",".........................KrK....","..KK....................KrrK....",".KrrKK.................KrRrK....",".KrRRrKK..............KrRRrK.KK.","..KrRRRrKK..........KKrRRRrKKrK.","..KrRRRRRrKK.......KrRRRRRRrrK..","...KrRRRRRRrK.....KrRRKRRRRRK...","...KrRRRRRRRrK...KrRRKYKRRRRRKK.","....KrRRRRRRRrK..KRRRKKKRRRRRRRK","....KrRRRRRRRRrKKRRRRRRRRRRKKKK.",".....KrRRRRRRRRrKRRRRRRRRRRK....",".....KrRRRRRRRRRrRRRRRRRWKWK....","......KrrRRRRRRRRRRRRRRKK.K.....",".......KKrrRRRRRRRRRRRRK........",".........KKRRRRRRRRRRRRK........","........KRRRYYYYYYRRRRRRK.......",".......KRRRYYYYYYYYRRRRRK.......","......KRRRRYYYYYYYYRRRRRRK......",".....KRRKRRYYYYYYYRRRKRRRK......",".KKKKRRK.KRRYYYYYRRRK.KRRK......","KrrrrRK..KRRRRRRRRRK...KRRK.....",".KKrrK..KRRK.KKK.KRRK..KWKWK....","...KK...KWKWK....KWKWK..KKK.....","........KKKK......KKKK.........."]}},"hero":{"walk1":["......KKK.......",".....KRRRK...K..","....KKKRKKK.KWK.","...KSSSSSSSKKSK.","..KSWSSSSSSSKSK.","..KSKKKKKKKSKSK.","..KSSSSSSSSSKSK.","...KSSSSSSSKKSK.","..KKBBBBBBBKYYYK",".KFKBBYYBBBKFyK.",".KKBBBBBBBBBKyK.","..KBBBBBBBBBKKK.","..KbbbKKKbbbK...","..KMMK...KMMK...","..KMMK...KMMK...",".KnnnK...KnnnK.."],"walk2":["......KKK.......",".....KRRRK...K..","....KKKRKKK.KWK.","...KSSSSSSSKKSK.","..KSWSSSSSSSKSK.","..KSKKKKKKKSKSK.","..KSSSSSSSSSKSK.","...KSSSSSSSKKSK.","..KKBBBBBBBKYYYK",".KFKBBYYBBBKFyK.",".KKBBBBBBBBBKyK.","..KBBBBBBBBBKKK.","..KbbbbbbbbbK...","...KMMKKMMK.....","...KMMKKMMK.....","..KnnnKKnnnK...."],"atk":["......KKK.............",".....KRRRK............","....KKKRKKK...........","...KSSSSSSSK..........","..KSWSSSSSSSK.........","..KSKKKKKKKSK.........","..KSSSSSSSSSK...l.....","...KSSSSSSSK....ll....","..KKBBBBBBBKK.KKKKKKKK",".KFKBBYYBBBKFYSSSSSSWK",".KKBBBBBBBBBKKKKKKKKKK","..KBBBBBBBBBK.........","..KbbbKKKbbbK.........",".KMMK.....KMMK........",".KMMK.....KMMK........","KnnnK.....KnnnK......."]},"deco":{"flowerR":["..K..",".KRK.","KRYRK",".KRK.","..g..",".gg.."],"flowerY":["..K..",".KYK.","KYWYK",".KYK.","..g..","..gg."],"flowerP":["..K..",".KvK.","KvYvK",".KvK.","..g..",".gg.."],"grass":["g..g.g","gg.gg.","ggggg.","hgghgg"],"grass2":[".g..g..",".gg.g.g","ggghggg"],"rock":["..KKKK..",".KSSSsK.","KSSsssMK","KsssssMK",".KKKKKK."],"rock2":[".KKK..",".KSsK.","KSssMK","KKKKKK"],"bush":["...KKKK...","..KGGhGK..",".KGhGGGGK.","KGGGGGGgGK","KgGGgGGGgK",".KKKKKKKK."],"pine":["...K...","..KgK..","..KGK..",".KgGgK.",".KGGGK.","KgGhGgK","KGGGGGK",".KKnKK.","...n..."],"tree":["...KKKK...","..KGGhGK..",".KGhGGGGK.","KGGGGGgGGK","KgGGGGGGgK",".KgGGgGgK.","..KKnnKK..","....nn....","....nn....","...KnnK..."],"deadtree":["..K...K.",".KnK.KnK","..KnKnK.","...KnK..","...KnK..","..KnnnK.","..KKKKK."],"mushS":[".KKK.","KRWRK","KKKKK",".KTK.",".KKK."],"fence":["K...K...K","N...N...N","NNNNNNNNN","N...N...N","NNNNNNNNN","N...N...N"],"sign":["KKKKKKK","KTTTTTK","KTKKKTK","KTTTTTK","KKKKKKK","...n...","...n..."],"bones":["E....E","KE..EK",".KEEK.",".KEEK.","KE..EK","E....E"],"lava":["..KKK...","KKRORKKK","KROYORRK","KKRRRKKK"],"pond":["....KKKKKK....","..KKCCCCCCKK..",".KCCClCCCCCCK.","KCCCCCCCClCCCK","KcCCCCCCCCCCcK",".KccCCCCCCccK.","..KKccccccKK..","....KKKKKK...."],"tent":["....K....","...KRK...","..KRrRK..",".KRrRRRK.","KRRrKRRRK","KKKKKKKKK"],"house":["....KKKK....","...KrrrrK...","..KrRRRRrK..",".KrRRRRRRrK.","KKKKKKKKKKKK",".KTTTTTTTTK.",".KTKCKTTKKK.",".KTKKKTTKnK.",".KTTTTTTKnK.",".KKKKKKKKKK."],"chest":[".KKKKKK.","KNYNNYNK","KKKYYKKK","KNNYYNNK","KKKKKKKK"],"torch":["..O..",".OYO.",".KRK.","..n..","..n..","..n.."],"castle":["K.K.K....K.K.K","KSKSK....KSKSK","KSSSKKKKKKSSSK","KSSSSSSSSSSSSK","KSKSSSSSSSSKSK","KSSSSSKKSSSSSK","KSSSSKnnKSSSSK","KKKKKKKKKKKKKK"]}};
 (() => {
   const road = document.getElementById('road');
@@ -3180,7 +3256,7 @@ const ROAD_ART = {"pal":{"K":"#18202E","k":"#3A4A63","W":"#FFFFFF","G":"#3CC47C"
   const XS = [.30, .66, .44, .20, .58, .80, .36, .64, .26, .52, .78, .42, .68, .34];
   const GAPS = [0, 230, 210, 250, 200, 240, 220, 260, 300, 280, 230, 210, 230, 220];   // 8번(드래곤) 앞뒤를 넓게
 
-  const gainText = s => [s.gain && '획득 ' + s.gain.join(', '), s.up && '강화 ' + s.up.join(', ')].filter(Boolean).join(' · ');
+  const gainText = s => [s.gain && '획득 ' + s.gain.join(', '), s.up && '강화 ' + s.up.join(', ')].filter(Boolean).join(', ');
 
   // 뼈대: 흙길(SVG) + 칸 카드 + 풍경/캐릭터 층
   road.innerHTML = `<canvas class="road-bg" aria-hidden="true"></canvas><svg class="road-path" aria-hidden="true">
@@ -3190,7 +3266,7 @@ const ROAD_ART = {"pal":{"K":"#18202E","k":"#3A4A63","W":"#FFFFFF","G":"#3CC47C"
     </svg><ol class="road-list">${ROAD.map(s => {
     const p = s.project && PROJECTS.find(x => x.id === s.project);
     const [kindName, color] = ROAD_KINDS[s.kind];
-    const meta = [s.meta, p && `${p.engine} · ${p.team}`].filter(Boolean).join(' · ');
+    const meta = [s.meta, p && `${p.engine}, ${p.team}`].filter(Boolean).join(', ');
     return `<li class="stop${p ? ' is-project' : ''}" style="--k:${color}">
       <div class="stop-card" tabindex="0"${p ? ` data-project="${esc(p.id)}" role="button"` : ''}>
         <time>${esc(s.date)}</time>
@@ -3202,7 +3278,7 @@ const ROAD_ART = {"pal":{"K":"#18202E","k":"#3A4A63","W":"#FFFFFF","G":"#3CC47C"
         ${meta ? `<div class="tip-meta">${esc(meta)}</div>` : ''}
         <p>${esc(p ? p.sub : s.desc)}</p>
         ${gainText(s) ? `<div class="tip-gain">${esc(gainText(s))}</div>` : ''}
-        <div class="tip-foot">${s.boss ? '대형 몬스터' : '몬스터'} ${esc(A.mobs[s.mob].name)} 처치${p ? ' · 클릭하면 프로젝트 상세로 이동' : ''}</div>
+        <div class="tip-foot">${s.boss ? '대형 몬스터' : '몬스터'} ${esc(A.mobs[s.mob].name)} 처치${p ? ', 클릭하면 프로젝트 상세로 이동' : ''}</div>
       </div>
     </li>`;
   }).join('')}<li class="stop road-forest" style="--k:#23915A">
@@ -3294,7 +3370,7 @@ const ROAD_ART = {"pal":{"K":"#18202E","k":"#3A4A63","W":"#FFFFFF","G":"#3CC47C"
     drawHero();
   }
 
-  // 풍경: 시기(구역)마다 다른 소품을 길·카드·몬스터를 피해 흩뿌림
+  // 풍경: 시기(구역)마다 다른 소품을 길, 카드, 몬스터를 피해 흩뿌림
   // ground: 바닥 얼룩 색 [바탕, 점], items: 흩뿌릴 소품, mark: [칸 번호, 큰 소품]
   // ground: [바탕, 밝은 얼룩, 잔점]
   const ZONES = [
@@ -3438,7 +3514,7 @@ const ROAD_ART = {"pal":{"K":"#18202E","k":"#3A4A63","W":"#FFFFFF","G":"#3CC47C"
   }
   function talk(){
     phase = 'talk'; frame = 'walk1'; flip = false;
-    hero.style.zIndex = '8';   // 말하는 동안은 나무·카드보다 위에
+    hero.style.zIndex = '8';   // 말하는 동안은 나무, 카드보다 위에
     drawHero();
     const said = ['휴~ 여기까지 왔다!', '저 숲 너머에 다음 모험이 있겠지?', '멈추지 않고 계속 헤쳐간다!'];
     const g = gen;
