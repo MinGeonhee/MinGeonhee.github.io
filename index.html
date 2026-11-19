@@ -1334,56 +1334,10 @@ const PROJECTS = [
     ],
     "tech": [
       {
-        "name": "NetLib 소켓 래퍼",
-        "desc": "Winsock 소켓과 주소를 클래스로 감싸 정적 라이브러리로 분리했습니다. 팩토리(Create)가 처음부터 unique_ptr을 반환해, 소켓의 해제 경로가 소유자 하나로 고정됩니다.",
-        "media": "",
-        "notion": "https://conscious-sun-4a1.notion.site/4042ae810b6681f49a4fc85fe05f1d52",
-        "points": [
-          "CSocket / CAddress가 IPv4, IPv6 주소와 Bind, Listen, Accept, Connect를 감쌈",
-          "생성자는 private, 초기화가 실패하면 Create가 nullptr 반환",
-          "소유권 이동은 std::move로 명시하고, 빌려 쓰는 함수는 raw 포인터로 받음"
-        ]
-      },
-      {
-        "name": "헤더 기반 패킷 경계 처리",
-        "desc": "TCP는 메시지 경계가 없기 때문에 패킷 앞에 타입과 길이를 담은 헤더를 두고, 헤더를 먼저 받은 뒤 길이만큼 본문을 받아 패킷을 구분합니다.",
-        "media": "",
-        "notion": "https://conscious-sun-4a1.notion.site/4042ae810b6681f49a4fc85fe05f1d52",
-        "points": [
-          "PacketHeader(타입, 길이) + Packet<T> 템플릿, #pragma pack(1)로 메모리 배치 일치",
-          "MSG_WAITALL로 헤더 크기, 본문 길이만큼 모두 받을 때까지 대기",
-          "길이 값이 최대 크기를 넘으면 버려서 버퍼 넘침 방지"
-        ]
-      },
-      {
-        "name": "이벤트 큐 기반 스레드 모델",
-        "desc": "Accept 스레드와 접속자별 수신 스레드는 받은 것을 받기 큐에 넣기만 하고, 접속자 목록과 게임 상태는 로직 스레드 하나에서만 수정합니다. 보낼 패킷은 락 없는 보내기 목록에 모았다가 같은 프레임 끝에 전송합니다.",
-        "media": "assets/server/mafia-netlib-flow.png",
-        "notion": "https://conscious-sun-4a1.notion.site/4042ae810b6681f49a4fc85fe05f1d52",
-        "points": [
-          "동기화가 필요한 지점을 이벤트 큐 하나로 제한",
-          "받기는 Pre_Update, 보내기는 Late_Update에서 처리해 응답이 같은 프레임 안에 나감",
-          "접속 종료는 수신 스레드의 recv 실패 한 경로로만 처리 (로그 → 접속자 삭제 → 게임 알림)",
-          "끊긴 클라이언트의 고유 ID는 재사용하지 않아 남은 이벤트가 엉뚱한 사람에게 처리되는 것을 방지"
-        ]
-      },
-      {
-        "name": "서버 권한 데이터와 방",
-        "desc": "플레이어, 방 객체는 서버에만 두고, 클라에는 패킷마다 필요한 정보만 골라 보냅니다. 방은 자리 7칸으로 관리하고, 들어오거나 나가면 방에 남은 사람에게 바로 알립니다.",
-        "media": "assets/server/mafia-room.png",
-        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b66818088fdc6fe6f4df4cf",
-        "points": [
-          "Protocol에는 용도별 패킷 구조체만 두고, 서버 내부 객체(CPlayer, CRoom)는 클라에 노출하지 않음",
-          "방 만들기 / 입장이 같은 응답(방 정보 + 자리 7칸)을 받아 클라 처리 경로를 하나로",
-          "채팅, 입장 요청의 \"누가\"는 연결 키로 판단하고, 방 번호처럼 서버가 아는 값은 클라에게서 받지 않음",
-          "로비 목록은 10초 폴링, 방 안 변화(입장, 퇴장, 채팅)는 서버가 즉시 푸시"
-        ]
-      },
-      {
         "name": "서버 권한 게임 로직",
+        "desc": "낮 / 밤 단계 전환, 투표 집계, 밤 능력, 승패를 서버의 게임 로직이 모두 정하고 클라에는 결과만 보냅니다. 밤 능력은 쓰는 순간 기록만 하고 밤이 끝날 때 정해진 순서로 한 번에 판정합니다.",
         "media": "assets/server/mafia-v12-clock.png",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b668120ab30ddd7c57a3032",
-        "desc": "낮 / 밤 단계 전환, 투표 집계, 밤 능력, 승패를 서버의 게임 로직이 모두 정하고 클라에는 결과만 보냅니다. 밤 능력은 쓰는 순간 기록만 하고 밤이 끝날 때 정해진 순서로 한 번에 판정합니다.",
         "points": [
           "프레임 시작에 읽은 시각 하나를 방 → 로직에 내려 \"지금 − 시작 ≥ 제한 시간\"으로 단계 전환",
           "밤 판정 순서 : 마피아 → 경호원 → 군인 (패킷 도착 순서와 무관)",
@@ -1394,9 +1348,9 @@ const PROJECTS = [
       },
       {
         "name": "직업별 능력 패킷",
+        "desc": "직업마다 보내는 내용이 다른 밤 능력을 공통 머리(JOB_ACTION)를 상속한 직업별 구조체로 나누고, 받을 때 길이와 직업을 단계별로 확인한 뒤에만 읽습니다.",
         "media": "assets/server/mafia-v12-betrayer.png",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b6681a88534f5555f55699a",
-        "desc": "직업마다 보내는 내용이 다른 밤 능력을 공통 머리(JOB_ACTION)를 상속한 직업별 구조체로 나누고, 받을 때 길이와 직업을 단계별로 확인한 뒤에만 읽습니다.",
         "points": [
           "① 머리 크기 → ② 머리의 직업으로 정한 구조체 크기 → ③ 그 자리의 실제 직업 순서로 검증",
           "보낸 사람의 자리는 패킷에 싣지 않고 연결 키로 서버가 찾음",
@@ -1404,10 +1358,21 @@ const PROJECTS = [
         ]
       },
       {
-        "name": "서버 검증, 정보 은닉 (보안 테스트)",
+        "name": "메모리 변조 탐지 Protected<T>",
+        "desc": "값을 저장할 때마다 새 랜덤 키로 XOR하고 체크값을 따로 두어, 메모리에서 값만 바꾸면 꺼낼 때 탐지하는 템플릿 타입입니다. 클라의 \"내 직업\" 값에 적용해 실제 게임에서 변조 → 클라 탐지 → 서버 거부까지 확인했습니다.",
+        "media": "assets/server/mafia-protected-test.gif",
+        "notion": "https://conscious-sun-4a1.notion.site/4092ae810b6681ecb18cf898323913cb",
+        "points": [
+          "같은 값이어도 저장할 때마다 메모리 모양이 달라 값 검색이 통하지 않음",
+          "연산자 오버로딩으로 기존 코드(switch, ==, 대입)를 고치지 않고 타입만 교체",
+          "한계 : 꺼낸 순간, 함수 후킹은 못 막음 → 판정은 결국 서버가 함"
+        ]
+      },
+      {
+        "name": "서버 검증과 정보 은닉",
+        "desc": "전원 직업을 보내고 화면에서만 가린 취약 빌드를 일부러 만들어 메모리 검색으로 마피아를 찾아낸 뒤, 자기 직업만 보내도록 고쳐 같은 검색이 실패하는 것을 확인했습니다. 조작한 패킷 14종도 직접 보내 모두 거부되는 것을 서버 로그로 확인했습니다.",
         "media": "assets/server/mafia-reject-log.png",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b6681f69646f727edc1ca72",
-        "desc": "전원 직업을 보내고 화면에서만 가린 취약 빌드를 일부러 만들어 메모리 검색으로 마피아를 찾아낸 뒤, 자기 직업만 보내도록 고쳐 같은 검색이 실패하는 것을 확인했습니다. 조작한 패킷 14종도 직접 보내 모두 거부되는 것을 서버 로그로 확인했습니다.",
         "points": [
           "숨길 정보는 보내지 않음 : 시작 패킷을 사람마다 따로, 게임 중엔 자리를 섞고 이름 대신 \"N번\"",
           "모든 요청을 연결 키, 단계, 생존, 실제 직업으로 서버가 다시 판정",
@@ -1415,14 +1380,39 @@ const PROJECTS = [
         ]
       },
       {
-        "name": "메모리 변조 탐지 Protected<T>",
-        "media": "assets/server/mafia-protected-test.gif",
-        "notion": "https://conscious-sun-4a1.notion.site/4092ae810b6681ecb18cf898323913cb",
-        "desc": "값을 저장할 때마다 새 랜덤 키로 XOR하고 체크값을 따로 두어, 메모리에서 값만 바꾸면 꺼낼 때 탐지하는 템플릿 타입입니다. 클라의 \"내 직업\" 값에 적용해 실제 게임에서 변조 → 클라 탐지 → 서버 거부까지 확인했습니다.",
+        "name": "NetLib 분리와 패킷 송수신 구조",
+        "desc": "게임과 무관한 정적 라이브러리로 소켓, 접속자, 패킷 송수신, 스레드를 분리하고, 게임에는 이벤트 콜백으로 결과만 전달하는 구조입니다.",
+        "media": "assets/server/mafia-server-main.png",
+        "notion": "https://conscious-sun-4a1.notion.site/4042ae810b6681f49a4fc85fe05f1d52",
         "points": [
-          "같은 값이어도 저장할 때마다 메모리 모양이 달라 값 검색이 통하지 않음",
-          "연산자 오버로딩으로 기존 코드(switch, ==, 대입)를 고치지 않고 타입만 교체",
-          "한계 : 꺼낸 순간, 함수 후킹은 못 막음 → 판정은 결국 서버가 함"
+          "수신 스레드는 이벤트 큐에 넣기만 하고, 접속자와 게임 상태는 로직 스레드 하나에서만 수정",
+          "받기는 Pre_Update, 보내기는 Late_Update에서 처리해 응답이 같은 프레임 안에 나감",
+          "패킷 앞에 타입과 길이를 담은 헤더를 두어 TCP의 메시지 경계를 구분",
+          "팩토리(Create)가 unique_ptr을 반환해 소켓 해제 경로를 소유자 하나로 고정"
+        ]
+      },
+      {
+        "name": "이벤트 큐 기반 멀티스레드 채팅 서버",
+        "desc": "Winsock TCP 기반 1:N 콘솔 채팅 서버입니다. Accept 스레드와 클라이언트마다 생성되는 수신 스레드는 받은 내용을 이벤트 큐에 넣기만 하고, main 스레드가 큐에서 꺼내 방 입장, 브로드캐스트, 퇴장을 처리합니다.",
+        "media": "assets/server/mafia-v12-room.png",
+        "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b668157ab40dd36da3eed96",
+        "intent": "accept와 recv는 데이터가 올 때까지 멈추는 블로킹 함수라 한 스레드에서 모두 처리할 수 없었고, 그렇다고 각 스레드가 채팅방 데이터를 직접 수정하면 모든 곳에 락을 걸어야 했습니다.",
+        "points": [
+          "Accept 스레드는 접속을 Connect 이벤트로, 수신 스레드는 패킷과 접속 종료를 이벤트로 전달",
+          "mutex로 보호한 ServerEventQueue 하나로 스레드 간 데이터 전달을 모음",
+          "채팅방 데이터는 main 스레드에서만 수정해 별도 락이 필요 없음",
+          "끊긴 수신 스레드는 자기 자신이 아니라 main 스레드에서 join"
+        ]
+      },
+      {
+        "name": "직업 7종 밤 능력과 결과 화면",
+        "desc": "7종 직업이 밤마다 능력을 쓰고, 서버가 판정한 결과를 패킷으로 받아 직업별 도트 장면과 대상 목록으로 보여 주는 콘텐츠입니다. 클라이언트는 누구에게 능력을 쓸지만 보내고 판정은 하지 않습니다.",
+        "media": "assets/server/mafia-night-mafia.png",
+        "notion": "https://conscious-sun-4a1.notion.site/4092ae810b66810fb973e371c4d7ca7d",
+        "points": [
+          "탐정, 영매, 배신자처럼 바로 결과가 나는 능력은 쓴 사람에게만 전송",
+          "마피아, 경호원, 군인 결과는 밤이 끝날 때 방 전원에게 전송",
+          "Tab으로 능력 화면과 원탁, 채팅 화면을 전환"
         ]
       }
     ],
@@ -2892,6 +2882,7 @@ const SKILLS = [
   {
     "name": "이벤트 큐 기반 멀티스레드 채팅 서버",
     "cat": "서버",
+    "project": "mafia",
     "desc": "Winsock TCP 기반 1:N 콘솔 채팅 서버입니다. Accept 스레드와 클라이언트마다 생성되는 수신 스레드는 받은 내용을 이벤트 큐에 넣기만 하고, main 스레드가 큐에서 꺼내 방 입장, 브로드캐스트, 퇴장을 처리합니다.",
     "media": "assets/server/mafia-v12-room.png",
     "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b668157ab40dd36da3eed96",
@@ -2930,7 +2921,7 @@ const SKILLS = [
     "media": "assets/server/mafia-v12-betrayer.png"
   },
   {
-    "name": "서버 검증, 정보 은닉 (보안 테스트)",
+    "name": "서버 검증과 정보 은닉",
     "cat": "서버",
     "project": "mafia",
     "media": "assets/server/mafia-reject-log.png"
