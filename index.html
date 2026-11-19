@@ -987,9 +987,16 @@ const PROJECTS = [
       },
       {
         "name": "시민 시스템",
-        "desc": "맵에 생동감을 불어넣는 시민 관리 시스템입니다.",
-        "media": "assets/duet/citizen.png",
-        "notion": "https://conscious-sun-4a1.notion.site/34f2ae810b668050aa66c70d846603f2"
+        "desc": "CNPC_Base를 상속한 CNPC_Citizen이 JSON 프리셋으로 외형을 조립하고, 레벨별 Waypoint를 따라 걷거나 달리는 생활형 NPC 시스템입니다. 광장 레벨은 시민을 Pool에서 생성하고, 마지막 지점에 도착하면 Dissolve 후 제거합니다.",
+        "media": "assets/duet/citizen.mp4",
+        "notion": "https://conscious-sun-4a1.notion.site/3c42ae810b66801b953bcb7e9bcf3b5a",
+        "intent": "시민마다 모델, 의상, 파츠 조합을 클래스로 따로 구현하면 조합이 늘어날수록 초기화 코드가 중복되어, 외형과 이동 경로를 데이터(CITIZEN_DATA, Waypoint)로 분리했습니다.",
+        "points": [
+          "CITIZEN_DATA 하나로 Body 모델, 의상 색상, 눈과 입 Atlas, Hair와 Beard 파츠, 애니메이션을 JSON 프리셋으로 관리",
+          "같은 Body에 Atlas 칸, 파츠, 색상만 바꿔 서로 다른 시민으로 보이게 구성",
+          "모델별 Walk, Run Animation Index를 로딩 때 캐싱해 Spawn마다 애니메이션을 다시 찾지 않음",
+          "고정 배치 시민은 대화, 퀘스트용으로 쓰고, 이동 시민은 Pool에서 Waypoint와 속도를 받아 CCT로 이동"
+        ]
       },
       {
         "name": "인스턴스 메쉬",
@@ -1374,7 +1381,7 @@ const PROJECTS = [
       },
       {
         "name": "서버 권한 게임 로직",
-        "media": "assets/server/mafia-logic-flow.png",
+        "media": "assets/server/mafia-v12-clock.png",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b668120ab30ddd7c57a3032",
         "desc": "낮 / 밤 단계 전환, 투표 집계, 밤 능력, 승패를 서버의 게임 로직이 모두 정하고 클라에는 결과만 보냅니다. 밤 능력은 쓰는 순간 기록만 하고 밤이 끝날 때 정해진 순서로 한 번에 판정합니다.",
         "points": [
@@ -1387,7 +1394,7 @@ const PROJECTS = [
       },
       {
         "name": "직업별 능력 패킷",
-        "media": "assets/server/mafia-packet-flow.png",
+        "media": "assets/server/mafia-v12-betrayer.png",
         "notion": "https://conscious-sun-4a1.notion.site/4092ae810b6681a88534f5555f55699a",
         "desc": "직업마다 보내는 내용이 다른 밤 능력을 공통 머리(JOB_ACTION)를 상속한 직업별 구조체로 나누고, 받을 때 길이와 직업을 단계별로 확인한 뒤에만 읽습니다.",
         "points": [
@@ -2871,14 +2878,22 @@ const SKILLS = [
     "name": "시민 시스템",
     "cat": "클라이언트 시스템",
     "project": "duet",
-    "desc": "맵에 생동감을 불어넣는 시민 관리 시스템입니다.",
-    "media": "assets/duet/citizen.png"
+    "desc": "CNPC_Base를 상속한 CNPC_Citizen이 JSON 프리셋으로 외형을 조립하고, 레벨별 Waypoint를 따라 걷거나 달리는 생활형 NPC 시스템입니다. 광장 레벨은 시민을 Pool에서 생성하고, 마지막 지점에 도착하면 Dissolve 후 제거합니다.",
+    "media": "assets/duet/citizen.mp4",
+    "notion": "https://conscious-sun-4a1.notion.site/3c42ae810b66801b953bcb7e9bcf3b5a",
+    "intent": "시민마다 모델, 의상, 파츠 조합을 클래스로 따로 구현하면 조합이 늘어날수록 초기화 코드가 중복되어, 외형과 이동 경로를 데이터(CITIZEN_DATA, Waypoint)로 분리했습니다.",
+    "points": [
+      "CITIZEN_DATA 하나로 Body 모델, 의상 색상, 눈과 입 Atlas, Hair와 Beard 파츠, 애니메이션을 JSON 프리셋으로 관리",
+      "같은 Body에 Atlas 칸, 파츠, 색상만 바꿔 서로 다른 시민으로 보이게 구성",
+      "모델별 Walk, Run Animation Index를 로딩 때 캐싱해 Spawn마다 애니메이션을 다시 찾지 않음",
+      "고정 배치 시민은 대화, 퀘스트용으로 쓰고, 이동 시민은 Pool에서 Waypoint와 속도를 받아 CCT로 이동"
+    ]
   },
   {
     "name": "이벤트 큐 기반 멀티스레드 채팅 서버",
     "cat": "서버",
     "desc": "Winsock TCP 기반 1:N 콘솔 채팅 서버입니다. Accept 스레드와 클라이언트마다 생성되는 수신 스레드는 받은 내용을 이벤트 큐에 넣기만 하고, main 스레드가 큐에서 꺼내 방 입장, 브로드캐스트, 퇴장을 처리합니다.",
-    "media": "assets/server/chat-flow.png",
+    "media": "assets/server/mafia-v12-room.png",
     "notion": "https://conscious-sun-4a1.notion.site/3f92ae810b668157ab40dd36da3eed96",
     "intent": "accept와 recv는 데이터가 올 때까지 멈추는 블로킹 함수라 한 스레드에서 모두 처리할 수 없었고, 그렇다고 각 스레드가 채팅방 데이터를 직접 수정하면 모든 곳에 락을 걸어야 했습니다.",
     "points": [
@@ -2893,7 +2908,7 @@ const SKILLS = [
     "cat": "서버",
     "project": "mafia",
     "desc": "게임과 무관한 정적 라이브러리로 소켓, 접속자, 패킷 송수신, 스레드를 분리하고, 게임에는 이벤트 콜백으로 결과만 전달하는 구조입니다.",
-    "media": "assets/server/mafia-netlib-flow.png",
+    "media": "assets/server/mafia-server-main.png",
     "notion": "https://conscious-sun-4a1.notion.site/4042ae810b6681f49a4fc85fe05f1d52",
     "points": [
       "수신 스레드는 이벤트 큐에 넣기만 하고, 접속자와 게임 상태는 로직 스레드 하나에서만 수정",
@@ -2906,13 +2921,13 @@ const SKILLS = [
     "name": "서버 권한 게임 로직",
     "cat": "서버",
     "project": "mafia",
-    "media": "assets/server/mafia-logic-flow.png"
+    "media": "assets/server/mafia-v12-clock.png"
   },
   {
     "name": "직업별 능력 패킷",
     "cat": "서버",
     "project": "mafia",
-    "media": "assets/server/mafia-packet-flow.png"
+    "media": "assets/server/mafia-v12-betrayer.png"
   },
   {
     "name": "서버 검증, 정보 은닉 (보안 테스트)",
