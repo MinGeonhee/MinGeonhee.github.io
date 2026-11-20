@@ -1544,9 +1544,9 @@ const PROJECTS = [
   }
 ];
 
-// 대표 프로젝트(featured)를 맨 앞 큰 카드로
-// featured 숫자가 작을수록 앞. 맨 앞 프로젝트가 처음에 보이는 기본 프로젝트
-PROJECTS.sort((a, b) => (a.featured || 99) - (b.featured || 99));
+// 기간 시작(YYYY.MM)이 최근인 프로젝트부터. 맨 앞 프로젝트가 처음에 보이는 기본 프로젝트
+// featured는 순서가 아니라 "추천" 표시에만 쓴다
+PROJECTS.sort((a, b) => b.period.slice(0, 7).localeCompare(a.period.slice(0, 7)));
 
 /* ============================================================ */
 const $ = s => document.querySelector(s);
